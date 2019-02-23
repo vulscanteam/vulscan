@@ -39,7 +39,7 @@
 **安装命令：pip install -r requirements.txt**
 
 （打包命令：pip freeze> requirements.txt //如果开发POC需要新的依赖库，在这里记录，尽可能的不使用依赖库减少依赖）
-（默认账户演示，密码demo123456）
+（默认账户demo，密码demo123456）
 
 ## 插件编写
 **目录下的Template.py为插件模版，基于pocsuite配置了一些规则**
