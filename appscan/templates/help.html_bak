@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" href="/static/favicon.ico">
+	<meta name="description" content="">
+	<meta name="keyword" content="">
+	<meta name="author" content="">
+	<title>版本说明</title>
+	<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="/static/style.css">
+</head>
+<body>
+{% include 'header.html'%}
+<div class="container banner">
+
+	<div class="bs-docs-section">
+		<div class="page-header">
+		<h3>使用说明</h3>
+		</div>
+		<div class="bs-callout bs-callout-info">
+		遵循高内聚、低耦合、轻量级 vulscan poc管理工具，基于pocsuite,web界面基于 django</br>
+		集成Pocsuite-dev、实现分享POC 获取更新最新版、只要贡献一个poc或者对代码提供优化|帮助|完善均可提供升级</br>		
+		Template.py 是 pocsuite模版,里面有使用参考手册,可以单独使用 pocsuite 进行交叉扫描</br>	
+		先要安装python依赖库,pip install -r requirements.txt,然后切换到目录运行即可 cd ~ && start.bat</br>
+		
+		</div>
+					
+		<div class="page-header">
+		<h3>最近更新</h3>
+		</div>
+		<div class="bs-callout bs-callout-info">
+		1.模版中增加web指纹识别 模块 </br>	
+		2.一键扫描使用多线程阻塞模式</br>
+		3.一键扫描、C段扫描、单个POC扫描及载入功能同步漏洞风险等级字段</br>
+		</div>
+
+
+
+		<div class="page-header">
+		<h3>准备更新</h3>
+		</div>
+		<div class="bs-callout bs-callout-info">
+		1.定制cookies，增加成员函数模版；</br>	
+		2.菜单栏目,调用百度接口信息收集；</br>	
+		3.poc超过100后，动态获取POC类别，自动载入 poc，手动分类（自动）；（数据库与本地统计不相等则更新），待POC多了后自动分类；</br>	
+		4.首页后台AJAX回调处理后端任务进度，完成后返回前端模块并跳转；</br>	
+		5.优化代码消耗资源,能给前端处理的尽量给前端处理；</br>
+		6.优化任务锁定,防止多任务冲突,保存后台任务进度,多任务记录；</br>
+		7.借鉴其他 扫描模块。 seebug、bugscan、巡风的poc；</br>
+		8.增加被动扫描收集功能，建立启发式分类引擎；</br>
+		9.处理多ID，vul id 重复的处理；</br>
+		10.增加C段扫描 socket 代理功能；</br>
+		11.增加 ACL telnet 测试 是否联通；</br>
+		12.提供资产对接扫描接口？fofa？</br>
+		13.解决重启刷新poc更新问题</br>
+		14.增加poc搜索功能；</br>
+		15.本地poc与数据库poc数量不一致时，根据poc文件重建数据库；</br>
+		16.修复poc 只支持http的情况，增加https支持</br>
+		17.解决poc不存在vuid传值</br>
+		18.增加主机端口服务风险菜单</br>
+
+		</div>
+
+
+
+		<div class="page-header">
+		<h3>扫描引擎通用模块</h3>
+		</div>
+		<div class="bs-callout bs-callout-info">
+		1.SQL注入漏洞</br>	
+		2.XSS漏洞</br>	
+		3.参数污染，模糊测试参考owasp参数列表</br>	
+		4.SSRF漏洞检测 test.0535code.com</br>	
+		6.文件包含漏洞</br>	
+		7.URL跳转漏洞</br>	
+		8.测试接口泄漏漏洞</br>
+		9.SVN/CVS文件泄漏漏洞</br>
+		10.目录压缩包漏洞</br>
+		11.DNS漏洞</br>
+		12.中间件弱口令、未授权访问</br>
+		13.通用CMS漏洞</br>
+		14.代码执行+命令执行</br>
+		<p>以上是爬虫应该检测的通用漏洞</p>
+		</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		
+		
+	</div>
+</br></br></br></br></br></br></br>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+{% include 'footer.html' %}
+<!-- js引用-->
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+</body>
+</html>

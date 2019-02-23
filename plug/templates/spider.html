@@ -1,0 +1,266 @@
+{% if user.is_authenticated %}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" href="/static/favicon.ico">
+	<meta name="description" content="">
+	<meta name="keyword" content="">
+	<meta name="author" content="root" >
+	<title>百度爬虫</title>
+	<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="/static/style.css">
+</head>
+<body>
+{% include 'header.html'%}
+
+<div class="container text-center banner">
+
+
+<form class="form-horizontal" role="form" action="./spider" id="spider" method="POST"> <!-- action="./spider" -->
+{% csrf_token%}
+  <div class="form-group">
+    <label class="col-sm-2 control-label">搜索关键词：</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" placeholder="软件行业" name="keyword" value="{{form_conf.keyword}}">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">搜索引擎命令：</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" placeholder="inurl:index.php?id=" name="exec_sousuo" value="{{form_conf.exec_sousuo}}">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">搜索页数：</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" placeholder="100，输入100代表提取前100页" name="page_sousuo" value="{{form_conf.page_sousuo}}">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">爱站权重：</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" placeholder="1，输入1代表大于等于1" name="quanzhong_vaule" value="{{form_conf.quanzhong_vaule}}">
+    </div>
+  </div>  
+  <div class="form-group">
+    <label class="col-sm-2 control-label" title="当下拉列表漏洞较多的时候，可以点击然后输入首选字母检索poc">选择漏洞:</label>
+    <div class="col-sm-10">
+    <select class="form-control" name="vulid" id="vulid">
+        {% for v in data %}
+        <option value={{ v.vulID}}>{{ v.name }}</option>
+        {% endfor %} 
+    </select>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" name="chongfu_check" checked="checked"> 选择去除重复的域名结果
+        </label>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="button" class="btn btn-default" onclick="submit_spider()" id="submit">开始检索过滤</button> &nbsp;&nbsp;
+      <button type="button" class="btn btn-default" onclick="javascript:window.location.reload();">刷新结果</button>&nbsp;&nbsp;
+      <a target="_blank" class="btn btn-default" href="{% url 'plug_show_tables' %}">导出信息</a>&nbsp;&nbsp;
+      <button type="button" class="btn btn-default" onclick="reload_data()" id="reload">清空结果数据</button>&nbsp;&nbsp;
+      <button type="button" class="btn btn-default" data-toggle="modal" data-target=".bs-help-modal-lg">说明</button>&nbsp;&nbsp;
+    </div>
+  </div>
+</form>
+
+<!-- 大模态框 -->
+<div class="modal fade bs-help-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" style="display: none;">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+          <h4 class="modal-title" id="myLargeModalLabel">使用说明</h4>
+        </div>
+        <div class="modal-body">
+         <p>1.主要是百度爬虫，根据web指纹批量检索出url，验证漏洞用！</p>
+         <p>2.自动保存配置；</p>
+         <p>3.支持配置爱站权重；</p>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div>
+
+<!-- 进度条-->
+<div class="progress" id="spider_jindu">
+  <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 0%" id="progress"> 0% 完成
+  </div>
+</div>
+
+<!-- 数据库表格 -->
+<table class="table table-hover table-striped table-bordered">
+<tbody> <tr class="info">
+<!-- <th>ID</th> -->
+<th>URL</th>
+<th>权重</th>
+<th>VULID</th>
+<th>操作</th>
+</tr>
+
+{% for v in tables %}
+<tr>
+<!-- <td>{{ v.id }}</td>  -->
+<td>{{ v.url }}</td>
+<td>{{ v.aizhan }}</td>
+<td><a target="_blank" class="btn btn-info btn-xs" href="{% url 'vul_scan' v.vulid %}">VULID_{{ v.vulid }}</a></td>
+<td><a href="#">
+<a target="_blank" href="{{ v.url }}"><button type="button" class="btn btn-info btn-xs">访问</button></a> &nbsp;
+<button type="button" class="btn btn-info btn-xs" onclick=delete_url("{% url 'plug_delete_url' v.id %}") >删除</button> &nbsp;
+</td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+
+
+
+</div>
+
+
+
+{% include 'footer.html' %}
+<!-- js引用-->
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+
+
+<script type="text/javascript">
+//装入页面
+$(window).load(function() {
+  // 判断是否有任务在运行
+  start();
+}); 
+
+//爬虫处理方法
+function submit_spider(){
+  //alert(window.location.host);
+  //test = window.location.host + "{% url 'plug_ajax_spider' %}" ;
+  //alert(aaaa);
+  //document.forms.code.submit(); //提交表单
+  ajax_url = window.location.protocol + '//' + window.location.host + "{% url 'plug_ajax_spider' %}";
+  //alert(ajax_url);
+  $.ajax({
+           url:ajax_url,
+           data:$("#spider").serialize(),
+           type:"POST",
+           //success:function(data){//ajax返回的数据
+           // var result = data;
+           // alert(result);
+           //},
+      });  
+  ajax_resule = self.setInterval("get_jindu()",1000);
+  $("#spider_jindu").show();//显示进度条
+  $("#submit").addClass('disabled');
+}
+//获取爬虫任务进度
+//setInterval("get_jindu()",1000);
+function get_jindu(){
+  $.ajax({
+       url:window.location.protocol + '//' + window.location.host + "{% url 'plug_ajax_get_jindu' %}",
+       type:"GET",
+       success:function(data){//ajax返回的数据
+        var result = data;
+        //alert("width: "+result+"%");
+        //添加进度条
+        $("#progress").attr("style","width: "+result+"%");
+        //添加进度条 百分比 显示
+        $("#progress").html(function(){
+          if (result<100){
+            return result + "% 完成";
+          }
+          else {//完成后 清空 ajax刷新计划
+            if (result == 100){
+              self.clearInterval(ajax_resule);
+              $("#submit").removeClass('disabled'); 
+              return result + "% 完成";}
+            else{
+                self.clearInterval(ajax_resule);
+                $("#submit").removeClass('disabled');
+                return result + "网络异常 %"; }
+
+          }
+          });
+        },
+
+      });
+}
+//开始函数,负责调度 进度条
+function start(){
+    $.ajax({
+       url:window.location.protocol + '//' + window.location.host + "{% url 'plug_ajax_get_jindu' %}",
+       type:"GET",
+       success:function(data){//ajax返回的数据
+        var result = data;
+        $("#progress").html(function(){
+          if (result!=0){
+            //开始显示并刷新进度条
+            ajax_resule = self.setInterval("get_jindu()",1000);
+            $("#spider_jindu").show();//显示进度条
+            $("#submit").addClass('disabled');
+          }else{
+            //没有开始,默认隐藏进度条
+            $("#spider_jindu").hide(); 
+          }
+
+          });
+        },
+
+      });
+}
+//清空结果完成后 刷新页面
+function reload_data(){
+  ajax_url = window.location.protocol + '//' + window.location.host + "{% url 'plug_delete_tables' %}";
+  $.ajax({
+           url:ajax_url,
+           type:"GET",
+           success:function(data){//ajax返回的数据
+            var result = data*1; //弱类型强制转换
+            if (result==1){
+              window.location.reload();//刷新当前页面.
+            }
+          }
+      });  
+}
+function delete_url(url){
+  //alert(url);
+  ajax_url = window.location.protocol + '//' + window.location.host + url;
+  $.ajax({
+           url:ajax_url,
+           type:"GET",
+           success:function(data){//ajax返回的数据
+            var result = data*1; //弱类型强制转换
+            if (result==1){
+              window.location.reload();//刷新当前页面.
+            }
+          }
+      });  
+  //alert(ajax_url);
+}
+//未解决bug
+//1.多用户提交时，全局变量解决方案
+//2.当前用户多次提交时，全局变量被覆盖 == 临时给按钮添加 css属性 disabled 
+//3.下次打开页面，判断是否有任务在，动态调用进度条 == 已解决
+//4.判断当结束时，ajax不做定时请求 == 已解决
+//
+// 优化，当点击 刷新结果 时，刷新页面，可改为 实时监控 
+// 进度条进度，当发现等于100则刷新当前页面，或者使用ajax返回json，实时渲染页面
+</script>
+
+</body>
+</html>
+{% else %}
+<script>window.location.href="{% url 'login' %}";</script> 
+{% endif %}

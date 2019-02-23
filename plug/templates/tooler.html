@@ -1,0 +1,107 @@
+{% if user.is_authenticated %}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" href="/static/favicon.ico">
+	<meta name="description" content="">
+	<meta name="keyword" content="">
+	<meta name="author" content="">
+	<title>编码工具</title>
+	<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="/static/style.css">
+</head>
+<body>
+{% include 'header.html'%}
+<script type="text/javascript">
+	//jquery
+	function urlencode(){
+		//alert('1');
+		$("#action").val("urlencode");
+		document.forms.code.submit();
+		//添加一个POST元素，在后台判断处理方式
+	}
+	function urldecode(){
+		$("#action").val("urldecode");
+		document.forms.code.submit();
+	}
+	function asciicode(){
+		$("#action").val("asciicode");
+		document.forms.code.submit();	
+	}
+	function enbase64(){
+		$("#action").val("enbase64");
+		document.forms.code.submit();	
+	}
+	function debase64(){
+		$("#action").val("debase64");
+		document.forms.code.submit();	
+	}
+	function enmd5(){
+		$("#action").val("enmd5");
+		document.forms.code.submit();	
+	}
+</script>
+<form action="" id="code" method="POST">
+<div class="container text-center banner">
+<textarea class="form-control" rows="6" name="old">{{ old }}</textarea>
+<p></p>
+<textarea class="form-control" rows="8" name="new">{{ new }}</textarea>
+<p></p><p></p><p></p><p></p>
+{% csrf_token%} <!-- token -->
+<input type="hidden" name="action" id="action" value=""> 
+<!-- <p>界面参考TABLE页：http://tool.chinaz.com/js.aspx</p> -->
+<p>功能完善中!!!!</p>
+<!-- jquery id -->
+<div class="row">
+<div class="col-md-3">
+<button type="button" class="btn btn-primary" onclick="urlencode()" >URL编码</button>
+<button type="button" class="btn btn-primary" onclick="urldecode()" >URL解码</button>
+</div>
+<div class="col-md-3">
+<button type="button" class="btn btn-primary" onclick="asciicode()" >ASCII编码</button>
+</div>
+<div class="col-md-3">
+<button type="button" class="btn btn-primary" onclick="enbase64()" >BASE64编码</button>
+<button type="button" class="btn btn-primary" onclick="debase64()">BASE64解码</button>
+</div>
+<div class="col-md-3">
+<button type="button" class="btn btn-primary" onclick="enmd5()">MD5加密</button>
+<a target="_blank" href="https://somd5.com/"><button type="button" class="btn btn-primary" disabled="disabled">MD5解密</button><a>
+</div>
+</div>
+<p></p><p></p><p></p><p></p>
+</div>
+</form>
+<!-- 另一种布局 TABLE方式
+<div>
+   Nav tabs 
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#urlcode" aria-controls="urlcode" role="tab" data-toggle="tab">URL编码</a></li>
+    <li role="presentation"><a href="#urlencode" aria-controls="urlencode" role="tab" data-toggle="tab">URL解码</a></li>
+    <li role="presentation"><a href="#asciicode" aria-controls="asciicode" role="tab" data-toggle="tab">ASCII编码</a></li>
+    <li role="presentation"><a href="#base64" aria-controls="base64" role="tab" data-toggle="tab">BASE64编码</a></li>
+  </ul>
+
+   Tab panes 
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="urlcode">urlcode...URL编码</div>
+    <div role="tabpanel" class="tab-pane" id="urlencode">urlencode...URL解码</div>
+    <div role="tabpanel" class="tab-pane" id="asciicode">asciicode...ASCII编码</div>
+    <div role="tabpanel" class="tab-pane" id="base64">base64...BASE64编码</div>
+  </div>
+
+</div>
+-->
+
+{% include 'footer.html' %}
+<!-- js引用-->
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+</body>
+</html>
+{% else %}
+<script>window.location.href="{% url 'login' %}";</script> 
+{% endif %}

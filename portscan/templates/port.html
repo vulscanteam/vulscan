@@ -1,0 +1,168 @@
+{% if user.is_authenticated %}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="/static/favicon.ico">
+    <meta name="description" content="">
+    <meta name="keyword" content="">
+    <meta name="author" content="root" >
+    <title>端口扫描</title>
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+
+    <style type="text/css">
+    th{
+        text-align:center;/** 设置水平方向居中 */  
+    }
+    tr{
+      text-align:center;/** 设置水平方向居中 */
+    }
+    .not-allow-port{
+      background-color:#FF2D2D; /*设置不允许开放的端口背景色*/
+    }
+    .allow-port{
+      background-color:#28FF28; /*设置允许开放的端口背景色*/
+    }
+    </style>
+</head>
+<body>
+{% include 'header.html'%}
+<div class="container text-center banner">
+    <!-- 扫描面板-->
+    <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title">端口扫描</h3>
+          </div>
+          <div class="panel-body">
+                <!-- 扫描字段 -->
+                <div class="form-inline">
+                  <div class="form-group">
+                    <label >IP:</label> &nbsp;&nbsp;
+                    <input type="text" class="form-control" name="url" id="url" value="{{ ip }}" autocomplete="on">
+                  </div>
+				  &nbsp;&nbsp;&nbsp;&nbsp;
+				  <button type="submit" id="submit" class="btn btn-default" onclick="portscan();">Start</button> &nbsp;&nbsp;&nbsp;&nbsp;
+                </div>
+          </div>
+    </div>
+    <!-- 扫描面板结束 -->
+
+<p class="text-center">备注：全端口扫描时间比较长，请耐心等待。<span style="color:#F00">红色</span>为可能存在风险的端口</p>
+
+<!-- 实时添加数据 -->
+<table class="table table-hover form-inline" id="info">
+  <tr>
+    <th>Port</th>
+    <th>State</th>
+    <th>Service</th>
+    <th>Product</th>
+  </tr>
+</table>
+
+</div>
+
+
+{% include 'footer.html' %}
+<!-- js引用-->
+<script src="/static/jquery.js"></script>
+<script src="/static/jquery.cookie.js"></script>
+<!-- 包括所有已编译的插件 -->
+<script src="/static/js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+$(window).load(function() { 
+  //检测后台进度
+  portscan_jindu = self.setInterval("scan_jindu()",1000);
+  //隐藏导出报告按钮
+}) 
+
+function portscan(){
+  var host = $('#url').val();
+      var strRegex =/((2[0-4]\d|25[0-5]|[01]?\d\d?)\.){3}(2[0-4]\d|25[0-5]|[01]?\d\d?)/;
+      var re = new RegExp(strRegex); 
+      if(host!="")
+      {
+       if (!strRegex.test(host)) { 
+          alert("请输入正确的IP");
+          $('#url').val("")
+         return false; 
+        }
+      }else{
+        alert("IP不能为空")
+        $('#url').val("")
+        return false
+      }
+
+  ajax_url = window.location.protocol + "//" + window.location.host + "{% url 'port_check' %}";
+  $.get(ajax_url+"?host="+host);
+  portscan_jindu = self.setInterval("scan_jindu()",1000);
+  //刷新当前页面
+  //alert('start');
+}
+
+function scan_jindu(){
+  $.ajax({
+       url:window.location.protocol + '//' + window.location.host + "{% url 'port_jindu' %}",
+       type:"GET",
+       success:function(data){//ajax返回的数据
+        var result = data;
+        //alert("width: "+result+"%");
+        //$('#vulscan').text(result+"%");
+        //添加进度条
+        if (result == "unscan"){
+          //没有任务
+          self.clearInterval(portscan_jindu);
+          $('#url').attr('disabled', false)
+          $('#submit').attr('disabled', false);
+          $('#submit').text("Start");
+         }
+        else if (result == "scanning"){
+            $('#url').attr('disabled', 'disabled')
+            $('#submit').attr('disabled', 'disabled')
+            $('#submit').text("Running");
+        }
+        else if (result == "scanned"){
+          $('#url').attr('disabled', false)
+          $('#submit').attr('disabled', false);
+          $('#submit').text("Start");
+          scan_report();
+          self.clearInterval(portscan_jindu);
+
+         }
+       },})
+} 
+
+function scan_report(){
+  $.ajax({
+        url: "{% url 'port_report' %}",
+        type: 'GET',
+        headers:{"X-CSRFToken":$.cookie('csrftoken')},
+        dataType: "json",
+        success: function (data){
+          for(var i=0;i<data.length;i++){
+            var port = data[i]['port']
+            var state = data[i]['state']
+            var service = data[i]['service']
+            var product = data[i]['product']
+            if (port == "80" || port == "443"){
+              $('#info').append('<tr class="port allow-port"><td>'+port+'</td>'+'<td>'+state+'</td>'+'<td>'+service+'</td>'+'<td>'+product+'</td></tr>')
+            }else{
+              $('#info').append('<tr class="port not-allow-port"><td>'+port+'</td>'+'<td>'+state+'</td>'+'<td>'+service+'</td>'+'<td>'+product+'</td></tr>')
+            }
+          }
+        $('#submit').attr('disabled', false);
+        $('#submit').text("Start");
+        }    
+      });
+}
+
+</script>
+
+</body>
+</html>
+{% else %}
+<script>window.location.href="{% url 'login' %}";</script> 
+{% endif %}

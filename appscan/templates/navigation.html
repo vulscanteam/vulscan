@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="/static/favicon.ico">
+    <meta name="description" content="">
+    <meta name="keyword" content="">
+    <meta name="author" content="root" >
+    <title>安全网址导航</title>
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+	<style>
+	#link{margin:8px;}
+	</style>
+</head>
+<body>
+{% include 'header.html'%}
+{% include 'js.html' %}
+
+<div class="container text-center banner">
+
+{% for v in data  %}
+<div class="panel panel-primary">
+
+	<div class="panel panel-heading">{{ v.fenlei_name }}</div>
+
+	<div class="panel-body">
+	{% for w in v.fenlei_url  %}
+	<a id="link" href="{{ w.nav_url }}" class="btn btn-default" target="_blank">{{ w.nav_title }}</a>
+	{% endfor %}
+	</div>
+	
+</div>	
+{% endfor %}
+
+
+</div>
+
+{% include 'footer.html' %}
+
+</body>
+</html>

