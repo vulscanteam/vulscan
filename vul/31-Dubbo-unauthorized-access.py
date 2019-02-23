@@ -29,7 +29,7 @@ class DubboPOC(POCBase):
     vulID = '31'  # ssvid ID 如果是提交漏洞的同时提交 PoC,则写成 0
     version = '1'  # 默认为1
     vulDate = '2018-05-16'  # 漏洞公开的时间,不知道就写今天
-    author = 'songjianshan'  # PoC作者的大名
+    author = 'mel0dyzx'  # PoC作者的大名
     createDate = '2018-05-16'  # 编写 PoC 的日期
     updateDate = '2018-05-16'  # PoC 更新的时间,默认和编写时间一样
     references = ''  # 漏洞地址来源,0day不用写
@@ -49,7 +49,6 @@ class DubboPOC(POCBase):
     def _fingerprint(self):
         pass
 
-    # 验证模块 pocsuite -r 1-redis.py -u 10.1.5.26 --verify
     def _verify(self):
         # 调用指纹方法
         result={}
@@ -63,7 +62,7 @@ class DubboPOC(POCBase):
         unauth_ports = {     #用于探测 1、直接未授权访问  2、basic 弱口令登录
             "80",
             "443",
-            "8080",  #default port   test demo 34.197.163.149
+            "8080",  #default port   test demo 1.1.1.1
             # "8081",
             # "8082",
             # "8083",
@@ -73,7 +72,7 @@ class DubboPOC(POCBase):
             "8888",
             # "8089",
             # "8090",
-            "8000", # default pwd test  :http://169.60.204.51:8000/
+            "8000", # default pwd test  :http://1.1.1.1:8000/
             # "9080",
             # "9090",
             # "9999",
@@ -91,7 +90,7 @@ class DubboPOC(POCBase):
             "guest",
         }
         telnet_ports = {
-            "7070",    #default port  45.123.103.197
+            "7070",    #default port  1.1.1.1
             # "1234",
             # "8000",
             "10001",

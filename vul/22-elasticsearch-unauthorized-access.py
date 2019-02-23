@@ -19,7 +19,7 @@ class ElasticsearchPOC(POCBase):
     version = '1' #默认为1
     vulDate = '2017-02-21' #漏洞公开的时间,不知道就写今天
  
-    author = 'chenran01' #  PoC作者的大名
+    author = 'b0b@c' #  PoC作者的大名
     createDate = '2017-12-11'# 编写 PoC 的日期
     updateDate = '2017-12-11'# PoC 更新的时间,默认和编写时间一样
     references = 'http://blog.csdn.net/u011066706/article/details/51175761'# 漏洞地址来源,0day不用写
@@ -55,7 +55,7 @@ class ElasticsearchPOC(POCBase):
             _port = 9200
  
         payload = 'http://%s:%s/'%(_host,_port)
-		
+        
         #检测漏洞
         try:
             print payload
@@ -77,7 +77,7 @@ class ElasticsearchPOC(POCBase):
             #             result['VerifyInfo']['URL'] = _host
             #             result['VerifyInfo']['Payload'] = payload
         except Exception,ex:
-            print ex		 
+            print ex         
         print '[+]22 poc done'
         return self.save_output(result)
  

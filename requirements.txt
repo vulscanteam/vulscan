@@ -13,19 +13,3 @@ python-nmap
 
 
 
-# 打包命令
-# pip freeze > requirements.txt
-
-
-# 安装命令
-# pip install -r requirements.txt
-
-
-
-#linux修改 ~/.pip/pip.conf,win修改C:\Users\xx\pip\pip.ini
-#[global]
-#index-url = https://pypi.tuna.tsinghua.edu.cn/simple
-#[install]
-#trusted-host=mirrors.aliyun.com
-
-

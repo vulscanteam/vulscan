@@ -28,7 +28,7 @@ class DNSPOC(POCBase):
     version = '1' #默认为1
     vulDate = '2018-08-03' #漏洞公开的时间,不知道就写今天
 
-    author = 'wangqi' #  PoC作者的大名
+    author = 'colorway' #  PoC作者的大名
     createDate = '2018-08-03'# 编写 PoC 的日期
     updateDate = '2018-08-03'# PoC 更新的时间,默认和编写时间一样
     references=""
@@ -48,7 +48,6 @@ class DNSPOC(POCBase):
     def _fingerprint(self):
         pass
     
-    #验证模块 pocsuite -r 1-redis.py -u 10.1.5.26 --verify
     def _verify(self):
         import os, re
         result={}
@@ -111,17 +110,4 @@ class DNSPOC(POCBase):
 
 #注册类
 register(DNSPOC)
-
-
-"""
-PoC 编写规范及要求说明 https://github.com/knownsec/Pocsuite/blob/master/docs/CODING.md
-
-使用方法 https://github.com/knownsec/Pocsuite/blob/master/docs/translations/USAGE-zh.md
-
-集成 Pocsuite https://github.com/knownsec/Pocsuite/blob/master/docs/INTEGRATE.md
-
-钟馗之眼 批量验证
-pocsuite -r 1-redis-getshell.py --verify --dork "redis"  --max-page 50 --search-type host --report report.html
-pocsuite -r 1-redis-getshell.py --verify -f results.txt --threads 10 --report report.html
-"""
 

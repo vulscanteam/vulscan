@@ -23,7 +23,7 @@ class EverythingPOC(POCBase):
     version = '1' #默认为1
     vulDate = '2017-12-12' #漏洞公开的时间,不知道就写今天
 
-    author = 'wangqi02' #  PoC作者的大名
+    author = 'colorway' #  PoC作者的大名
     createDate = '2017-12-12'# 编写 PoC 的日期
     updateDate = '2017-12-12'# PoC 更新的时间,默认和编写时间一样
     references = 'https://jingyan.baidu.com/article/915fc414baf0be51384b206a.html'# 漏洞地址来源,0day不用写

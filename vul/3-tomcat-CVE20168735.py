@@ -39,7 +39,7 @@ class TomcatPOC(POCBase):
     install_requires = [] # PoC 第三方模块依赖，请尽量不要使用第三方模块，必要时请参考《PoC第三方模块依赖说明》填写
     cvss = u"严重" #严重,高危,中危,低危
 
-    #验证漏洞 pocsuite -r 3-tomcat-CVE20168735.py -u 10.1.5.26 --verify
+    #验证漏洞 pocsuite -r 3-tomcat-CVE20168735.py -u 1.1.1.1 --verify
     def _verify(self):
         import socket
         #定义返回结果
@@ -88,7 +88,7 @@ class TomcatPOC(POCBase):
             result['VerifyInfo']['URL'] = vul_url
             result['VerifyInfo']['Payload'] = send_payload
             '''
-			#            
+            #            
             data = sock.recv(512)
             sock.close()
         except Exception,e:

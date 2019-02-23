@@ -1,8 +1,0 @@
-1、记录扫描任务和漏洞记录多处冗余记录，api模块不记录(hook到function或聚合到function里的函数)；
-2、百度爬虫和zoomeye只能获取结果，实现获取见过后，动态调用pocsuite验证出有漏洞的数据；
-3、
-
-
-52 poc 使用文件服务器
-http://file.0535code.com/ue_poc.jpg
-

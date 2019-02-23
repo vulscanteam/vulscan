@@ -55,7 +55,7 @@ class TomcatPOC(POCBase):
         vul_url = "http://"+_host+":"+_port
         return vul_url
 
-    #验证漏洞 pocsuite -r 18-tomcat-CVE201712617.py -u 10.74.52.91 --verify
+    #验证漏洞 pocsuite -r 18-tomcat-CVE201712617.py -u 1.1.1.1 --verify
     def _verify(self):
         #定义返回结果
         result = {}

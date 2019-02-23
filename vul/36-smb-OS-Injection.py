@@ -29,7 +29,7 @@ class SMBPOC(POCBase):
     vulID = '36'  # ssvid ID 如果是提交漏洞的同时提交 PoC,则写成 0
     version = '1'  # 默认为1
     vulDate = '2018-06-7'  # 漏洞公开的时间,不知道就写今天
-    author = 'fanyingjie'  # PoC作者的大名
+    author = 'xiaohuihui1'  # PoC作者的大名
     createDate = '2018-06-7'  # 编写 PoC 的日期
     updateDate = '2018-06-7'  # PoC 更新的时间,默认和编写时间一样
     references = 'http://netsecurity.51cto.com/art/201705/539811.htm'  # 漏洞地址来源,0day不用写
@@ -49,7 +49,6 @@ class SMBPOC(POCBase):
     def _fingerprint(self):
         pass
 
-    # 验证模块 pocsuite -r 1-redis.py -u 10.1.5.26 --verify
     def _verify(self):
         # 调用指纹方法
         result={}
@@ -109,16 +108,3 @@ class SMBPOC(POCBase):
 
 # 注册类
 register(SMBPOC)
-
-"""
-PoC 编写规范及要求说明 https://github.com/knownsec/Pocsuite/blob/master/docs/CODING.md
-
-使用方法 https://github.com/knownsec/Pocsuite/blob/master/docs/translations/USAGE-zh.md
-
-集成 Pocsuite https://github.com/knownsec/Pocsuite/blob/master/docs/INTEGRATE.md
-
-钟馗之眼 批量验证
-pocsuite -r 1-redis-getshell.py --verify --dork "redis"  --max-page 50 --search-type host --report report.html
-pocsuite -r 1-redis-getshell.py --verify -f results.txt --threads 10 --report report.html
-"""
-

@@ -22,7 +22,7 @@ class ActiveMQPOC(POCBase):
     version = '1' #默认为1
     vulDate = '2018-06-05' #漏洞公开的时间,不知道就写今天
 
-    author = 'wangqi' #  PoC作者的大名
+    author = 'arr0w1' #  PoC作者的大名
     createDate = '2018-06-05'# 编写 PoC 的日期
     updateDate = '2018-06-05'# PoC 更新的时间,默认和编写时间一样
     references = 'https://help.aliyun.com/knowledge_detail/50436.html'# 漏洞地址来源,0day不用写

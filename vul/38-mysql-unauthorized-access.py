@@ -29,7 +29,7 @@ class MYSQLPOC(POCBase):
     vulID = '38'  # ssvid ID 如果是提交漏洞的同时提交 PoC,则写成 0
     version = '1'  # 默认为1
     vulDate = '2018-06-8'  # 漏洞公开的时间,不知道就写今天
-    author = 'fanyingjie'  # PoC作者的大名
+    author = 'xiaohuihui1'  # PoC作者的大名
     createDate = '2018-06-8'  # 编写 PoC 的日期
     updateDate = '2018-06-8'  # PoC 更新的时间,默认和编写时间一样
     references = 'http://www.freebuf.com/articles/rookie/162036.html'  # 漏洞地址来源,0day不用写
@@ -49,7 +49,6 @@ class MYSQLPOC(POCBase):
     def _fingerprint(self):
         pass
 
-    # 验证模块 pocsuite -r 1-redis.py -u 10.1.5.26 --verify
     def _verify(self):
         # 调用指纹方法
         result={}

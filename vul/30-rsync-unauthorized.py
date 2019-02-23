@@ -31,7 +31,7 @@ class rsyncPOC(POCBase):
     vulID = '30'  # ssvid ID 如果是提交漏洞的同时提交 PoC,则写成 0
     version = '1' #默认为1
     vulDate = '2018-05-15' #漏洞公开的时间,不知道就写今天
-    author = 'wanglin' #  PoC作者的大名
+    author = 'arr0w1' #  PoC作者的大名
     createDate ='2018-05-15'# 编写 PoC 的日期
     updateDate = '2018-05-15'# PoC 更新的时间,默认和编写时间一样
     references = 'https://rsync.samba.org'# 漏洞地址来源,0day不用写
@@ -51,7 +51,6 @@ class rsyncPOC(POCBase):
     def _fingerprint(self):
         pass
         
-    #验证模块 pocsuite -r 1-redis.py -u 10.1.5.26 --verify
     def _verify(self):
         import socket
 

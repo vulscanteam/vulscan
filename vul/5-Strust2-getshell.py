@@ -50,7 +50,7 @@ class Strust2POC(POCBase):
     install_requires = [] # PoC 第三方模块依赖，请尽量不要使用第三方模块，必要时请参考《PoC第三方模块依赖说明》填写
     cvss = u"严重" #严重,高危,中危,低危
 
-    #验证漏洞 pocsuite -r 5-Strust2-getshell.py -u 10.1.5.26 --verify
+    #验证漏洞 pocsuite -r 5-Strust2-getshell.py -u 1.1.1.1 --verify
 
     def check(self, url):
         result = []       

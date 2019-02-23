@@ -64,7 +64,7 @@ class TypechoPOC(POCBase):
             result['ShellInfo']['payload'] = payload
         print '[+]16 poc done'
         return self.save_output(result)
-    #漏洞攻击 pocsuite -r 15-tomcat-CVE201712617.py -u 10.74.52.91 --attack
+    #漏洞攻击 pocsuite -r 15-tomcat-CVE201712617.py -u 1.1.1.1 --attack
     def _attack(self):
         #定义返回结果
         result = {}
@@ -101,17 +101,3 @@ class TypechoPOC(POCBase):
 
 register(TypechoPOC)
 
-
-
-
-
-"""
-PoC 编写规范及要求说明 https://github.com/knownsec/Pocsuite/blob/master/docs/CODING.md
-
-使用方法 https://github.com/knownsec/Pocsuite/blob/master/docs/translations/USAGE-zh.md
-
-集成 Pocsuite https://github.com/knownsec/Pocsuite/blob/master/docs/INTEGRATE.md
-
-批量验证 pocsuite -r 16-Typecho install.php-unserialize.py --verify -f results.txt --threads 10 --report report.html
-
-"""

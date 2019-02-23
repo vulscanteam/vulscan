@@ -23,7 +23,7 @@ class HTTPPOC(POCBase):
     version = '1' #默认为1
     vulDate = '2018-05-07' #漏洞公开的时间,不知道就写今天
 
-    author = 'wangqi' #  PoC作者的大名
+    author = 'colorway' #  PoC作者的大名
     createDate = '2018-05-07'# 编写 PoC 的日期
     updateDate = '2018-05-07'# PoC 更新的时间,默认和编写时间一样
     references = 'https://www.cnblogs.com/bmjoker/p/8809231.html'# 漏洞地址来源,0day不用写
@@ -39,7 +39,6 @@ class HTTPPOC(POCBase):
     install_requires = [] # PoC 第三方模块依赖，请尽量不要使用第三方模块，必要时请参考《PoC第三方模块依赖说明》填写
     cvss = u"中危" #严重,高危,中危,低危
 
-    #验证漏洞 pocsuite -r http-header-injection.py -u 10.1.5.26 --verify
     def _verify(self):
         #定义返回结果
         result = {}

@@ -241,7 +241,7 @@ class OpensslPOC(POCBase):
     version = '1' #默认为1
     vulDate = '2014-04-01' #漏洞公开的时间,不知道就写今天
  
-    author = 'chenran' #  PoC作者的大名
+    author = 'b0b@c' #  PoC作者的大名
     createDate = '2017-12-12'# 编写 PoC 的日期
     updateDate = '2017-12-12'# PoC 更新的时间,默认和编写时间一样
     references = 'https://www.cnblogs.com/KevinGeorge/p/8029947.html'# 漏洞地址来源,0day不用写

@@ -31,7 +31,7 @@ class MSPOC(POCBase):
     version = '1' #默认为1
     vulDate = '2018-09-18' #漏洞公开的时间,不知道就写今天
 
-    author = 'wanglin' #  PoC作者的大名
+    author = 'arr0w1' #  PoC作者的大名
     createDate ='2018-09-18'# 编写 PoC 的日期
     updateDate = '2018-09-18'# PoC 更新的时间,默认和编写时间一样
     references = ['']# 漏洞地址来源,0day不用写

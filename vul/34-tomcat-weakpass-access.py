@@ -30,7 +30,7 @@ class TomcatPOC(POCBase):
     version = '1' #默认为1
     vulDate = '2018-05-17' #漏洞公开的时间,不知道就写今天
 
-    author = 'fanyingjie' #  PoC作者的大名
+    author = 'xiaohuihui1' #  PoC作者的大名
     createDate ='2018-05-17'# 编写 PoC 的日期
     updateDate = '2018-05-17'# PoC 更新的时间,默认和编写时间一样
     references = ['https://bbs.ichunqiu.com/thread-15983-1-1.html']# 漏洞地址来源,0day不用写
@@ -102,7 +102,7 @@ class TomcatPOC(POCBase):
         #确定port和vul_url了
         vul_url = vul_url+"/manager/html"
         print "final"+vul_url
-        #http://10.95.36.50:9080:9080/manager/html
+        #http://1.1.1.1:9080:9080/manager/html
 
 
         import base64
@@ -150,16 +150,3 @@ class TomcatPOC(POCBase):
 
 #注册类
 register(TomcatPOC)
-
-
-"""
-PoC 编写规范及要求说明 https://github.com/knownsec/Pocsuite/blob/master/docs/CODING.md
-
-使用方法 https://github.com/knownsec/Pocsuite/blob/master/docs/translations/USAGE-zh.md
-
-集成 Pocsuite https://github.com/knownsec/Pocsuite/blob/master/docs/INTEGRATE.md
-
-钟馗之眼 批量验证
-pocsuite -r 1-redis-getshell.py --verify --dork "redis"  --max-page 50 --search-type host --report report.html
-pocsuite -r 1-redis-getshell.py --verify -f results.txt --threads 10 --report report.html
-"""

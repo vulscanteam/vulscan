@@ -22,7 +22,7 @@ class NginxPOC(POCBase):
     version = '1' #默认为1
     vulDate = '2018-08-20' #漏洞公开的时间,不知道就写今天
 
-    author = 'wq' #  PoC作者的大名
+    author = 'arr0w1' #  PoC作者的大名
     createDate = '2018-08-20'# 编写 PoC 的日期
     updateDate = '2018-08-20'# PoC 更新的时间,默认和编写时间一样
     references = ['']# 漏洞地址来源,0day不用写
@@ -38,7 +38,6 @@ class NginxPOC(POCBase):
     install_requires = [] # PoC 第三方模块依赖，请尽量不要使用第三方模块，必要时请参考《PoC第三方模块依赖说明》填写
     cvss = u"中危" #严重,高危,中危,低危
 
-    #验证漏洞 pocsuite -r 1-redis.py -u 10.1.5.26 --verify
     def _verify(self):
         #定义返回结果
         result = {}
@@ -126,27 +125,3 @@ class NginxPOC(POCBase):
 register(NginxPOC)
 
 
-
-
-
-
-
-
-
-
-
-"""
-PoC 编写规范及要求说明 https://github.com/knownsec/Pocsuite/blob/master/docs/CODING.md
-
-使用方法 https://github.com/knownsec/Pocsuite/blob/master/docs/translations/USAGE-zh.md
-
-集成 Pocsuite https://github.com/knownsec/Pocsuite/blob/master/docs/INTEGRATE.md
-
-
-钟馗之眼 批量验证
-pocsuite -r 1-redis-getshell.py --verify --dork "redis"  --max-page 50 --search-type host --report report.html
-
-
-pocsuite -r 1-redis-getshell.py --verify -f results.txt --threads 10 --report report.html
-
-"""

@@ -39,7 +39,7 @@ class SolrPOC(POCBase):
     install_requires = [] # PoC 第三方模块依赖，请尽量不要使用第三方模块，必要时请参考《PoC第三方模块依赖说明》填写
     cvss = u"中危" #严重,高危,中危,低危
 
-    #验证漏洞 pocsuite -r 7-solr-access.py -u 10.1.5.26 --verify
+    #验证漏洞 pocsuite -r 7-solr-access.py -u 1.1.1.1 --verify
     def _verify(self):
         #定义返回结果
         result = {}

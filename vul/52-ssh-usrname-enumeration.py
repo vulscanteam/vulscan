@@ -85,7 +85,7 @@ class SS1HPOC(POCBase):
     version = '1' #默认为1
     vulDate = '2018-08-24' #漏洞公开的时间,不知道就写今天
 
-    author = 'fanyingjie' #  PoC作者的大名
+    author = 'xiaohuihui1' #  PoC作者的大名
     createDate = '2018-08-24'# 编写 PoC 的日期
     updateDate = '2018-08-24'# PoC 更新的时间,默认和编写时间一样
     references = "https://isc.sans.edu/diary/24004"# 漏洞地址来源,0day不用写
@@ -105,7 +105,6 @@ class SS1HPOC(POCBase):
     def _fingerprint(self):
         pass
         
-    #验证模块 pocsuite -r 1-redis.py -u 10.1.5.26 --verify
     def _verify(self):
         result={}
         vul_url = '%s' % self.url

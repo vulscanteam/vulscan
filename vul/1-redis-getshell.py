@@ -39,7 +39,7 @@ class RedisPOC(POCBase):
     cvss = u"严重" #严重,高危,中危,低危
 
 
-    #验证漏洞 pocsuite -r 1-redis.py -u 10.1.5.26 --verify
+    #验证漏洞 pocsuite -r 1-redis.py -u 1.1.1.1 --verify
     def _verify(self):
         #定义返回结果
         result = {}
