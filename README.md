@@ -21,16 +21,16 @@
 
 ## 目录结构
 
-accounts 				#账户应用
-appscan 				#扫描应用
-jixianjiancha 	#基线检查应用
-log 					  #日志路径路径
-plug 					  #扩展模块
-pocsuite 				#pocsuite核心库
-portscan 				#端口扫描
-vul 					  #POC
-weakpass				#弱口令文件
-webscan				  #主项目
+├─accounts 				#账户应用
+├─appscan 				#扫描应用
+├─jixianjiancha 		#基线检查应用
+├─log 					#日志路径路径
+├─plug 					#扩展模块
+├─pocsuite 				#pocsuite核心库
+├─portscan 				#端口扫描
+├─vul 					#POC
+├─weakpass				#弱口令文件
+└─webscan				#主项目
 
 ## 维护作者
 
