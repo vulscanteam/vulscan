@@ -31,7 +31,7 @@
 
 **扩展模块**
 
-![](https://github.com/vulscanteam/vulscan/blob/master/webscan/demo/5.png)
+![](https://github.com/vulscanteam/vulscan/blob/master/webscan/demo/6.png)
 
 
 ## 安装指南 [![Python 2.7](https://img.shields.io/badge/python-2.7-yellow.svg)](https://www.python.org/) 
