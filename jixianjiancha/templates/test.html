@@ -1,0 +1,287 @@
+{% if user.is_authenticated %}
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>基线检查</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <!-- 引入 Bootstrap -->
+      <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+      <link rel="stylesheet" type="text/css" href="/static/style.css">
+   </head>
+   <body>
+	{% include 'header.html'%}
+	
+
+<div class="container text-center banner">
+    <!-- 扫描面板-->
+    <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title">基线检查</h3>
+          </div>
+          <div class="panel-body">
+                <!-- 扫描字段 -->
+                <div class="form-inline">
+				{% csrf_token %}
+                  <div class="form-group">
+                    <label >主机IP:</label> &nbsp;&nbsp;
+                    <input type="text" class="form-control" name="ip" id="ip" value="" autocomplete="on">&nbsp;&nbsp;
+                  </div>
+                  <div class="form-group">
+                    <label >账户:</label> &nbsp;&nbsp;
+                    <input type="text" class="form-control" name="username" id="username" value="root" autocomplete="on">&nbsp;&nbsp;
+                  </div>
+                  <div class="form-group">
+                    <label >密码:</label> &nbsp;&nbsp;
+                    <input type="password" class="form-control" name="password" id="password" autocomplete="on">&nbsp;&nbsp;
+                  </div>
+				  &nbsp;&nbsp;&nbsp;&nbsp;
+				  <button type="submit" id="submit" class="btn btn-default" name="check" id="submit">检查</button> &nbsp;&nbsp;&nbsp;&nbsp;
+                </div> <br />			
+				
+          </div>
+    </div>
+
+	
+			<!--进度条开始-->
+			<div class="progress progress-striped active">
+				<div class="progress-bar progress-bar-success" role="progressbar"
+					 aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
+					 style="width: 0%;" id="jindu">
+					<span class="sr-only">40% 完成</span>
+				</div>
+			</div>
+			<!--进度条结束-->
+			<!-- container end 放不下 -->
+			<table class="table table-hover table-striped table-bordered" id="show_info" >
+			  <thead><tr class="active " ><th colspan="4" class="text-center">基本信息</th></tr></thead>
+			<tbody> <tr class="info">
+			<!-- <th>ID</th> -->
+			<th id="th0" class="text-center" >IP</th>
+			<th id="th1" class="text-center">帐号</th>
+			<th id="th1" class="text-center">密码</th>
+			<th id="th1" class="text-center">检查项</th>
+			</tr>
+			<tr>
+				<td class="text-center" id="ip1">{% if result %}{{ip}}{%endif%}</td>
+				<td class="text-center" id="username1">{% if result %}{{username}}{%endif%}</td>
+				<td class="text-center" id="password1">{% if result %}{{password}}{%endif%}</td>
+				<td class="text-center">端口扫描,系统检查</td>
+			</tr>
+			</tbody>
+			</table>
+
+			<br>
+			<table class="table table-hover table-striped table-bordered" id="show_info1" >
+				<thead><tr class="active " ><th colspan="5" class="text-center">系统扫描</th></tr></thead>
+			<tbody> <tr class="info">
+			<!-- <th>ID</th> -->
+			<th id="th0" class="text-center">ID</th>
+			<th id="th1" class="text-center">检查项</th>
+			<th id="th2" class="text-center">检查结果</th>
+			<th id="th2" class="text-center">level</th>
+			<th id="th2" class="text-center">修复建议</th>
+			</tr>
+
+			</tbody>
+			</table>	
+			
+			
+</div>
+
+
+	{% include 'footer.html' %}
+ 
+   </body>
+   <!-- jQuery (Bootstrap 的 JavaScript 插件需要引入 jQuery) -->
+   <script src="/static/jquery.js"></script>
+   <script src="/static/jquery.cookie.js"></script>
+   <!-- 包括所有已编译的插件 -->
+   <script src="/static/js/bootstrap.min.js"></script>
+   
+   <!--提交检查-->
+	<script type="text/javascript">
+		var tag="0";
+		scriptLength=0.0;
+		executeScriptNumber=0.0;
+		$('#submit').click(function(){
+			var ip=document.getElementById("ip").value
+			var username=document.getElementById("username").value
+			var password=document.getElementById("password").value
+			$('#submit').attr('disabled', 'disabled')
+			$('#submit').text("检测中");
+			$.ajax({
+				url: '/jixianjiancha/check/',
+				type: 'POST',
+				headers:{"X-CSRFToken":$.cookie('csrftoken')},
+				dataType: "json",
+				data: {ip:document.getElementById("ip").value,username:document.getElementById("username").value,password:document.getElementById("password").value},
+				 success: function (data){
+				 	scriptLength=0.0;
+				 	if(data['result']){
+				 		scriptLength=0.0;
+						executeScriptNumber=0.0;
+				 		tag="1";
+				 		$('#ip1').text(data['ip']);
+				 		$('#username1').text(data['username']);
+				 		$('#password1').text("******");
+				 		scriptLength+=data['scriptLength']
+				 		time=data['time']
+
+				 		for(var i=0;i<scriptLength;i++){
+				 			getResult(ip,username,password,i+1,time)
+				 		}	
+
+				 	}else{
+				 		alert(data['error']);
+				 		$('#submit').attr('disabled', false)
+				 		$('#submit').text("检查");
+				 	}
+				 }
+			});
+		});
+
+		var id=1;
+		<!--执行异步请求 获取脚本执行结果-->
+		function getResult(ip,username,password,index,time){
+			$.ajax({
+				url: '/jixianjiancha/executeScript/',
+				type: 'POST',
+				headers:{"X-CSRFToken":$.cookie('csrftoken')},
+				dataType: "json",
+				data:{ip:ip,username:username,password:password,index:index,time:time},
+				success: function (data){
+					executeScriptNumber+=1;
+					if(scriptLength==executeScriptNumber){	
+						deleteScript(ip,username,password);
+					}
+					var jindutiao = document.getElementById("jindu");
+					jindutiao.style.width=executeScriptNumber/scriptLength*100+"%";
+					if (executeScriptNumber == scriptLength){
+						$('#submit').attr('disabled', false)
+				 		$('#submit').text("检查");
+				 		$('#jindu').hide();
+					}
+					if(data['exploit']['rows']==1){
+						for (key in data['exploit']){
+							if(key!="rows" && key!="tag"){
+								for (key2 in data['exploit'][key]){
+									if(key2==""){
+										if(data['exploit'][key][key2]['tag']==0){
+											
+										}else{
+											color="warning";
+											if(data['exploit'][key][key2]['level']=="高危"){
+												color="warning"
+											}
+											if(data['exploit'][key][key2]['level']=="中危"){
+												color="success"
+											}
+											$("#show_info1").append('<tr class="'+color+'"><td class="text-center">'+id+'</td><td class="text-center">'+key+'</td><td class="text-center">'+data['exploit'][key][key2]['describe']+'</td><td class="text-center">'+data['exploit'][key][key2]['level']+'</td><td class="text-center">'+'<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#'+id+'" >修复建议</button>'+'<div class="modal fade" id="'+id+'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" ><div class="modal-dialog"><div class="modal-content" ><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button><h4 class="modal-title text-center" id="myModalLabel">修复建议</h4></div><div class="modal-body text-center">'+data['exploit'][key][key2]['repair']+'</div><div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">关闭</button></div></div><!-- /.modal-content --></div><!-- /.modal --></div>'+'</td></tr>');
+											id+=1;
+										}
+									}else{
+										if(data['exploit'][key][key2]['tag']==0){
+											
+										}else{
+											color="warning";
+											if(data['exploit'][key][key2]['level']=="高危"){
+												color="warning"
+											}
+											if(data['exploit'][key][key2]['level']=="中危"){
+												color="success"
+											}
+											$("#show_info1").append('<tr class="'+color+'"><td class="text-center">'+id+'</td><td class="text-center">'+key+'</td><td class="text-center">'+key2+":"+data['exploit'][key][key2]['describe']+'</td><td class="text-center">'+data['exploit'][key][key2]['level']+'</td><td class="text-center">'+'<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#'+id+'" >修复建议</button>'+'<div class="modal fade" id="'+id+'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" ><div class="modal-dialog"><div class="modal-content" ><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button><h4 class="modal-title text-center" id="myModalLabel">修复建议</h4></div><div class="modal-body text-center">'+data['exploit'][key][key2]['repair']+'</div><div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">关闭</button></div></div><!-- /.modal-content --></div><!-- /.modal --></div>'+'</td></tr>');
+											id+=1;
+										}
+									}
+									
+								}
+								
+							}
+						}
+						}
+						else{
+							num=0;
+							for (key in data['exploit']){
+								if(key!="rows"){
+									for (key2 in data['exploit'][key]){
+										if(data['exploit'][key][key2]['tag']==1){num+=1;}
+									}
+								}
+							}
+							var tmp=1;
+							for (key in data['exploit']){
+								if(key!="rows"){
+									for (key2 in data['exploit'][key]){
+										if(tmp==1){
+											if(data['exploit'][key][key2]['tag']==0){
+
+											}else{
+												color="warning";
+											if(data['exploit'][key][key2]['level']=="高危"){
+												color="warning"
+											}
+											if(data['exploit'][key][key2]['level']=="中危"){
+												color="success"
+											}
+												$("#show_info1").append('<tr class="'+color+'"><td class="text-center">'+id+'</td><td class="text-center" rowspan="'+num+'">'+key+'</td><td class="text-center">'+key2+":"+data['exploit'][key][key2]['describe']+'</td><td class="text-center">'+data['exploit'][key][key2]['level']+'</td><td class="text-center">'+'<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#'+id+'" >修复建议</button>'+'<div class="modal fade" id="'+id+'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" ><div class="modal-dialog"><div class="modal-content" ><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button><h4 class="modal-title text-center" id="myModalLabel">修复建议</h4></div><div class="modal-body text-center">'+data['exploit'][key][key2]['repair']+'</div><div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">关闭</button></div></div><!-- /.modal-content --></div><!-- /.modal --></div>'+'</td></tr>');
+												id+=1;
+												tmp=2;
+											}
+											
+										}else{
+											if(data['exploit'][key][key2]['tag']==0){
+												
+											}else{
+												color="warning";
+											if(data['exploit'][key][key2]['level']=="高危"){
+												color="warning"
+											}
+											if(data['exploit'][key][key2]['level']=="中危"){
+												color="success"
+											}
+												$("#show_info1").append('<tr class="'+color+'"><td class="text-center">'+id+'</td><td class="text-center">'+key2+":"+data['exploit'][key][key2]['describe']+'</td><td class="text-center">'+data['exploit'][key][key2]['level']+'</td><td class="text-center">'+'<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#'+id+'" >修复建议</button>'+'<div class="modal fade" id="'+id+'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" ><div class="modal-dialog"><div class="modal-content" ><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button><h4 class="modal-title text-center" id="myModalLabel">修复建议</h4></div><div class="modal-body text-center">'+data['exploit'][key][key2]['repair']+'</div><div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">关闭</button></div></div><!-- /.modal-content --></div><!-- /.modal --></div>'+'</td></tr>');
+												id+=1;
+											}
+											
+										}
+									}
+								}
+							}
+						}
+					}
+
+
+				});
+		}
+
+
+		<!--删除远程服务器上的脚本-->
+		function deleteScript(ip,username,password){
+			$.ajax({
+				url: '/jixianjiancha/deleteScript/',
+				type: 'POST',
+				headers:{"X-CSRFToken":$.cookie('csrftoken')},
+				dataType: "json",
+				data:{ip:ip,username:username,password:password},
+				success: function (data){
+					var test="test";
+				}
+			});
+		}
+		<!--向表格中添加数据-->
+	</script>  
+
+
+
+   <!--ajax请求-->
+	<script type="text/javascript">
+		function suggestion(){
+			alert(1);
+		}
+	</script> 
+
+</html>
+{% else %}
+<script>window.location.href="{% url 'login' %}";</script> 
+{% endif %}

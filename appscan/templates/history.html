@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="/static/favicon.ico">
+    <meta name="description" content="">
+    <meta name="keyword" content="">
+    <meta name="author" content="root">
+    <title>漏洞汇总</title>
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+
+    <style type="text/css">
+        th {
+            text-align: center; /** 设置水平方向居中 */
+
+        }
+
+        tr {
+            text-align: center; /** 设置水平方向居中 */
+        }
+
+    </style>
+</head>
+<body>
+{% include 'header.html' %}
+{% include 'js.html' %}
+<script src="/static/jquery.cookie.js"></script>
+
+<div class="container text-center banner">
+    <!-- 扫描面板-->
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">漏洞汇总</h3>
+        </div>
+    </div>
+    <!-- 扫描面板结束 -->
+
+
+    <!-- 实时添加数据 -->
+    <table class="table table-hover form-inline" id="info">
+        <tr>
+            <th>URL</th>
+            <th>漏洞</th>
+            <th>评级</th>
+            <th>操作</th>
+        </tr>
+        {% for v in nums.object_list %}
+            <tr>
+                <td>{{ v.0 }}</td>
+                <td>{{ v.1 }}</td>
+                <td>{{ v.2 }}</td>
+                <td hidden>{{ v.3 }}</td>
+                <td>
+                    <button type="button" class="btn btn-primary btn-small" onclick="rescan(this)" role="button">重新检测
+                    </button> &nbsp;&nbsp;
+                    <button type="button" class="btn btn-primary btn-small" onclick="todetail(this)" role="button">详情</button>&nbsp;&nbsp;
+                    <button type="button" class="ignore btn btn-primary btn-small" onclick="ignore(this)" role="button">
+                        忽略
+                    </button>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+    <button type="button" class="btn btn-info btn-small " onclick="rescan_all()" role="button">一键重新检测</button>
+
+</div>
+
+<div class="pagelist text-center">
+    <ul class="pagination">
+        <!--  如果当前页有前一页，则上一页链接有效  -->
+        {% if nums.has_previous %}
+            <li class="page"><a href="?page={{ nums.previous_page_number }}">上一页</a></li>
+{#        {% else %}#}
+{#            <li class="page "><a>上一页</a></li>#}
+        {% endif %}
+
+        <!--当前页码 -->
+        {% for page in numlist %}
+            {% if page %}
+                {% ifequal page nums.number %}
+                    <li class="page active"><a href="?page={{ page }}">{{ page }}</a></li>
+                {% else %}
+                    <li class="page"><a href="?page={{ page }}">{{ page }}</a></li>
+                {% endifequal %}
+
+            {% endif %}
+        {% endfor %}
+
+        <!-- 如果当前页有下一页，则下一页链接有效-->
+        {% if nums.has_next %}
+            <li class="page"><a href="?page={{ nums.next_page_number }}">下一页</a></li>
+{#        {% else %}#}
+{#            <li class="page "><a>下一页</a></li>#}
+        {% endif %}
+    </ul>
+    <div>{{ nums.number }}/{{ nums.paginator.num_pages }}</div>
+
+</div>
+
+
+<!-- 延迟加载 遮罩层 -->
+<div class="modal fade" id="loadingModal">
+    <div style="width: 200px;height:20px; z-index: 20000; position: absolute; text-align: center; left: 50%; top: 50%;margin-left:-100px;margin-top:-10px">
+        <div class="progress progress-striped active" style="margin-bottom: 0;">
+            <div class="progress-bar" style="width: 100%;"></div>
+        </div>
+        <h5>正在检测...</h5>
+    </div>
+</div>
+
+{% include 'footer.html' %}
+<!-- js引用-->
+{#<!-- 包括所有已编译的插件 -->#}
+
+<script type="text/javascript">
+    function rescan(obj) {
+        $('#loadingModal').modal({backdrop: 'static', keyboard: false});
+        $("#loadingModal").modal('show');
+        var vulid = $(obj).parent('td').prev().text() //获取vulid
+        var url = $(obj).parents('td').prev().prev().prev().prev().text() //获取url
+
+        $.ajax({
+            url: window.location.protocol + '//' + window.location.host + "{% url 'poc_scan' %}?" + "id=" + vulid + "&url=" + url,
+            type: "GET",
+            headers: {"X-CSRFToken": $.cookie('csrftoken')},
+            success: function (data) {
+                $("#loadingModal").modal('hide'); //隐藏遮罩层
+                var result = Number(data);
+                if (result == 1) {
+                    alert("未修复")
+                } else {
+                    alert("已修复")
+                    $(obj).parent().parent().remove()
+                }
+            }
+
+        })
+
+    }
+
+    function ignore(obj) {
+        if (confirm('确认忽略改漏洞？')) {
+            var url = $(obj).parents('td').prev().prev().prev().prev().text() //获取url
+            var vulname = $(obj).parents('td').prev().prev().prev().text() //获取漏洞名称
+            $.ajax({
+                url: window.location.protocol + '//' + window.location.host + "{% url 'vul_ignore' %}?" + "vulname=" + vulname + "&url=" + url,
+                type: "GET",
+                headers: {"X-CSRFToken": $.cookie('csrftoken')},
+                success: function (data) {
+                    var result = Number(data);
+                    if (result == 1) {
+                        alert('已忽略该漏洞！')
+                        $(obj).parent().parent().remove()
+                    }
+                }
+            })
+        }
+        else {
+            return 0;
+        }
+    }
+
+    function rescan_all() {
+        $('#loadingModal').modal({backdrop: 'static', keyboard: false});
+        $("#loadingModal").modal('show');
+        $.ajax({
+            url: window.location.protocol + '//' + window.location.host + "{% url 'vuls_rescan' %}",
+            type: "GET",
+            headers: {"X-CSRFToken": $.cookie('csrftoken')},
+            success: function (data) {
+                $("#loadingModal").modal('hide'); //隐藏遮罩层
+                var result = Number(data);
+                if (result == 1) {
+                    alert("检测完成，刷新页面！")
+                    window.location.reload()
+                } else {
+                    return 0;
+                }
+            }
+
+        })
+    }
+
+
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

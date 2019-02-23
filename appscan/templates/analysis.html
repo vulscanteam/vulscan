@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="/static/favicon.ico">
+    <meta name="description" content="">
+    <meta name="keyword" content="">
+    <meta name="author" content="root" >
+    <title>POC漏洞分析模块</title>
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+</head>
+<body>
+{% include 'header.html'%}
+{% include 'js.html' %}
+<div class="container text-center banner">
+    <!-- 扫描面板 -->
+    <div class="panel-primary">
+      <div class="panel-heading">
+            <h1 class="panel-title">漏洞分析</h3>
+      </div>
+      <div class="panel-body" id="host">
+      {% for v in data %}
+            <div class="col-sm-12 col-md-6 col-lg-4 scan">
+                <div class="content" style="text-align:left">
+                <p>
+                <span class="glyphicon glyphicon-ok" aria-hidden="true"><span>
+                <span class="label label-danger" title="可用">{{ v.cvss }}</span>       
+                <span class="badge">VULID:{{ v.vulID }}</span>
+                <span><a href="{{ v.references }}" target="_blank">{{ v.desc | slice:"40" }}</a><span>
+                </p>
+              </div>
+            </div>
+      {% endfor %}  
+      </div>
+    </div>
+    <!-- 扫描面板结束 -->
+</div>
+
+
+{% include 'footer.html' %}
+
+<script type="text/javascript">
+$(window).load(function() {
+  bg_mouse();
+}); 
+//控制鼠标显示
+function bg_mouse(){
+  //当鼠标滑入时将div的class换成bg_css
+  $('.scan').hover(function(){
+    $(this).addClass('bg_css'); 
+   },function(){
+    //鼠标离开时移除divOver样式
+    $(this).removeClass('bg_css');
+   }
+  );
+}
+</script>
+
+
+</body>
+</html>

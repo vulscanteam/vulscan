@@ -1,0 +1,246 @@
+{% if user.is_authenticated %}
+	<!DOCTYPE html>
+	<html lang="zh-CN">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="icon" href="/static/favicon.ico">
+		<meta name="description" content="">
+		<meta name="keyword" content="">
+		<meta name="author" content="">
+		<title>VULSCAN</title>
+		<link rel="icon" href="/static/favicon.ico">
+		<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+		<link href="/static/css/docs.css" rel="stylesheet">
+		<link href="/static/css/pygments-manni.css" rel="stylesheet">
+<!--[if lt IE 9]><script src="./res/ie8-responsive-file-warning.js"></script><![endif]-->
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+<![endif]-->
+<!-- Favicons -->
+	</head>
+	<body>
+	{% include 'header.html'%}
+	{% include 'js.html' %}
+	<!-- Docs page layout -->
+	<div class="container bs-docs-container">
+		<div class="row">
+			<div class="col-md-3">
+				<div class="bs-sidebar hidden-print" role="complementary">
+					<ul class="nav bs-sidenav">
+						<li><a href="#main-vulscan">VulScan说明</a>
+							<ul class="nav">
+								<li><a href="#main-vulscan-1">使用说明</a></li>
+								<li><a href="#main-vulscan-2">API 说明</a></li>
+							</ul>
+						</li>
+						<li><a href="#main-main">主要功能</a>
+							<ul class="nav">
+								<li><a href="#main-main-1">一键扫描</a></li>
+								<li><a href="#main-main-2">POC 插件</a></li>
+								<li><a href="#main-main-3">端口扫描</a></li>
+								<li><a href="#main-main-4">基线检查</a></li>
+								<li><a href="#main-main-5">网址导航</a></li>
+							</ul>
+						</li>						
+						<li><a href="#main-plug">扩展模块</a>
+							<ul class="nav">
+								<li><a href="#main-plug-1">百度爬虫</a></li>
+								<li><a href="#main-plug-2">钟馗之眼</a></li>
+								<li><a href="#main-plug-3">指纹识别</a></li>
+								<li><a href="#main-plug-4">C段扫描</a></li>
+								<li><a href="#main-plug-5">弱口令扫描</a></li>
+								<li><a href="#main-plug-6">一键扫描周报</a></li>
+								<li><a href="#main-plug-7">一键扫描月报</a></li>
+								<li><a href="#main-plug-8">基线检查周报</a></li>
+								<li><a href="#main-plug-9">基线检查月报</a></li>
+								<li><a href="#main-plug-10">编码工具</a></li>
+							</ul>
+						</li>
+						<!-- 栏目模版
+						<li><a href="#main-dict">常用字典</a>
+							<ul class="nav">
+								<li><a href="#main-dict-1">常用字典</a></li>
+								<li><a href="#main-dict-2">常用字典</a></li>
+								<li><a href="#main-dict-3">常用字典</a></li>
+								<li><a href="#main-dict-4">常用字典</a></li>
+						</ul></li>
+						 -->
+					</ul>
+				</div>
+			</div>
+			<div class="col-md-9" role="main">
+				<!-- VulScan ============================================ -->
+				<div class="bs-docs-section">
+					<div class="page-header">
+						<h1 id="main-vulscan">VulScan说明</h1>
+					</div>
+					<h3 id="main-vulscan-1">使用说明</h3>
+					<div class="bs-callout bs-callout-info">
+						<p>
+					遵循高内聚、低耦合、轻量级 vulscan poc管理工具，基于pocsuite,web界面基于 django</br>
+					集成Pocsuite-dev、支持扩展模块、扩展POC </br>		
+					Template.py 是 pocsuite规范 模版,里面有使用参考手册,可以单独使用 pocsuite 进行交叉扫描</br>	
+					先要安装python依赖库,pip install -r requirements.txt,然后切换到目录运行即可 cd ~ && start.bat</br>
+						</p>
+					</div>
+					<h3 id="main-vulscan-2">API 说明</h3>
+					<div class="bs-callout bs-callout-info">
+						<p>
+					接口参数：action=[index|调用一键扫描,jindu|获取扫描进度,report|获取扫描报告],url=test.com|扫描的url,token=api|扫描用户名</br>
+					一键扫描接口：http://127.0.0.1:8000/api?action=index&url=127.0.0.1&token=api</br>
+					扫描进度接口：http://127.0.0.1:8000/api?action=jindu&url=127.0.0.1&token=api</br>
+					json接口报告：http://127.0.0.1:8000/api?action=report&url=127.0.0.1&token=api</br>
+						</p>
+					</div>
+				</div>
+
+					
+				<!-- active,success,warning,danger,info -->				
+				<!-- 核心模块 -->
+				<div class="bs-docs-section">
+					<div class="page-header">
+						<h1 id="main-main">主要功能</h1>
+					</div>
+					<h3 id="main-main-1">一键扫描</h3>
+					<div class="bs-callout bs-callout-danger">
+						<p>
+							<span>一键扫描是根据本地存在的poc，一一加载做扫描，一键扫描填写的url根据实际情况填写（域名，路径），开始扫描后按钮会显示实时扫描进度，扫描完成后会出现查看报告按钮！</span><br>
+						</p>
+					</div>
+					<h3 id="main-main-2">POC 插件</h3>
+					<div class="bs-callout bs-callout-danger">
+						<p>
+							<span>POC插件主要分为两类，分别为主机类和WEB类型的漏洞，可以对单一一个漏洞进行扫描，对于自定义的插件，复制进 vul目录下，重启即可看到和使用poc插件了！</span><br>
+						</p>
+					</div>	
+					<h3 id="main-main-3">端口扫描</h3>
+					<div class="bs-callout bs-callout-danger">
+						<p>
+							<span>端口扫描使用默认快速方式扫描常见端口和服务，判断不可信或存在风险的端口进行提示！</span><br>
+						</p>
+					</div>	
+					<h3 id="main-main-4">基线检查</h3>
+					<div class="bs-callout bs-callout-danger">
+						<p>
+							<span>基线检查目前只支持linux衍生系统，支持在线检查和离线检查，输入ip，用户，密码即可自行检查系统及三方软件的安全配置，操作系统等漏洞，主要用于白盒检查。实用为主！</span><br>
+						</p>
+					</div>	
+					<h3 id="main-main-5">网址导航</h3>
+					<div class="bs-callout bs-callout-danger">
+						<p>
+							<span>支持通过admin后台配置导航分类及导航内容，记录常用的url便于收藏和学习！</span><br>
+						</p>
+					</div>						
+				</div>
+					
+					
+				<!-- 扩展模块 -->
+				<div class="bs-docs-section">
+					<div class="page-header">
+						<h1 id="main-plug">扩展模块</h1>
+					</div>
+					<h3 id="main-plug-1">百度爬虫</h3>
+					<div class="bs-callout bs-callout-warning">
+						<p>
+							<span>模拟百度爬虫，获取指定关键词、权重的url数据加载 payload！</span><br>
+						</p>
+					</div>
+					<h3 id="main-plug-2">钟馗之眼</h3>
+					<div class="bs-callout bs-callout-warning">
+						<p>
+							<span>zoomeye接口，通过指纹批量获取数据加载 payload！</span><br>
+						</p>
+					</div>
+					<h3 id="main-plug-3">指纹识别</h3>
+					<div class="bs-callout bs-callout-warning">
+						<p>
+							<span>识别url使用的开源服务和关联的子域名！</span><br>
+						</p>
+					</div>
+					<h3 id="main-plug-4">C段扫描</h3>
+					<div class="bs-callout bs-callout-warning">
+						<p>
+							<span>自自定义poc扫描C段！</span><br>
+						</p>
+					</div>
+					<h3 id="main-plug-5">弱口令扫描</h3>
+					<div class="bs-callout bs-callout-warning">
+						<p>
+							<span>自定义字段和弱口令类型扫描弱口令漏洞！</span><br>
+						</p>
+					</div>
+					<h3 id="main-plug-6">一键扫描周报</h3>
+					<div class="bs-callout bs-callout-warning">
+						<p>
+							<span>一键扫描每周报表统计！</span><br>
+						</p>
+					</div>
+					<h3 id="main-plug-7">一键扫描月报</h3>
+					<div class="bs-callout bs-callout-warning">
+						<p>
+							<span>一键扫描每月报表统计！</span><br>
+						</p>
+					</div>
+					<h3 id="main-plug-8">基线检查周报</h3>
+					<div class="bs-callout bs-callout-warning">
+						<p>
+							<span>Linux操作系统基线检查每周报表统计！</span><br>
+						</p>
+					</div>
+					<h3 id="main-plug-9">基线检查月报</h3>
+					<div class="bs-callout bs-callout-warning">
+						<p>
+							<span>Linux操作系统基线检查每月报表统计！</span><br>
+						</p>
+					</div>
+					<h3 id="main-plug-10">编码工具</h3>
+					<div class="bs-callout bs-callout-warning">
+						<p>
+							<span>在线编码工具！</span><br>
+						</p>
+					</div>
+					<br><br><br><br>
+				</div>
+
+				<!-- 模版
+				<div class="bs-docs-section">
+					<div class="page-header">
+						<h1 id="main-dict">标题</h1>
+					</div>
+					<h3 id="main-dict-1">子标题</h3>
+					<div class="bs-callout bs-callout-warning">
+						<p>
+							<span>内容</span><br>
+						</p>
+					</div>
+				</div>
+				-->
+			</div>
+		</div>
+	</div>
+	<!-- Footer
+    ================================================== -->
+	<footer class="footer navbar-inverse footcolor text-center">
+	<nav class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
+		<div class="container">
+			<p><br>
+			<img border="0" alt="点击这里给我发消息" src="http://wpa.qq.com/pa?p=1:610358898:3" onclick="javascript:window.open('http://wpa.qq.com/msgrd?v=3&amp;uin=610358898&amp;Menu=yes', '_blank', 'height=502, width=644,toolbar=no,scrollbars=no,menubar=no,status=no');" style="CURSOR: pointer">
+			<b>MAIL：admin@0535code.com </b></p>
+		</div>
+	</nav>
+	</footer>
+	<!-- JS and analytics only. -->
+	<!-- Bootstrap core JavaScript
+================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="/static/js/holder.js"></script>
+	<script src="/static/js/application.js"></script>
+</body>
+</html>
+{% else %}
+<script>window.location.href="{% url 'login' %}";</script> 
+{% endif %}

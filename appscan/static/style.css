@@ -1,0 +1,28 @@
+body{
+	margin-left: auto;
+	margin-right: auto;
+	/*width: 80%;*/
+}
+.banner{
+	margin-top:60px;
+}
+.footcolor{
+	color:#FFFFFF;
+}
+/* scan */
+.scan {
+background-color: #FFF;
+height: 70px;
+width: 540px;
+border: 2px solid #ddd;
+//margin-left: 2px;
+//margin-top: 2px;
+
+}
+.content {
+margin:20px 10px auto;  
+text-align:right;           
+}
+.bg_css{
+background-color: #C0C0C0 ;
+}

