@@ -1,52 +1,11 @@
 
+# VulScan [![License](https://img.shields.io/aur/license/yaourt.svg)](https://github.com/vulscanteam/vulscan/blob/master/LICENSE)
+----------
 
+**VulScan**æ˜¯ä¸€æ¬¾åŸºäºPocsuiteå¼€å‘çš„POCæ’ä»¶æ‰«æå™¨ï¼Œéµå¾ªé«˜å†…èšã€ä½è€¦åˆã€è½»é‡çº§ vulscan pocç®¡ç†å·¥å…·ï¼Œä½¿ç”¨django
+åšwebç•Œé¢å‹å¥½çš„é›†æˆäº†Pocsuite-devã€æ”¯æŒæ‰©å±•æ¨¡å—ã€æ‰©å±•POCç­‰åŠŸèƒ½ï¼ 
 
-
-©À©¤accounts 				#ÕË»§Ó¦ÓÃ
-©À©¤appscan 				#É¨ÃèÓ¦ÓÃ
-©À©¤jixianjiancha 		#»ùÏß¼ì²éÓ¦ÓÃ
-©À©¤log 					#ÈÕÖ¾Â·¾¶Â·¾¶
-©À©¤plug 					#À©Õ¹Ä£¿é
-©À©¤pocsuite 				#pocsuiteºËĞÄ¿â
-©À©¤portscan 				#¶Ë¿ÚÉ¨Ãè
-©À©¤vul 					#POC
-©À©¤weakpass				#Èõ¿ÚÁîÎÄ¼ş
-©¸©¤webscan				#Ö÷ÏîÄ¿
-
-
-ÒÀÀµ°²×°£º
-
-# ´ò°üÃüÁî
-# pip freeze > requirements.txt
-
-
-# °²×°ÃüÁî
-# pip install -r requirements.txt
-
-
-
-#linuxĞŞ¸Ä ~/.pip/pip.conf,winĞŞ¸ÄC:\Users\xx\pip\pip.ini
-#[global]
-#index-url = https://pypi.tuna.tsinghua.edu.cn/simple
-#[install]
-#trusted-host=mirrors.aliyun.com
-
-
-
-
-
-ÄÚÍøÊ¹ÓÃ×¢Òâ£º
-52 poc Ê¹ÓÃÎÄ¼ş·şÎñÆ÷£ºhttp://file.0535code.com/ue_poc.jpg
-
-
-
-
-
-
-
-
-
-
+**è¯·ä½¿ç”¨è€…éµå®ˆã€Š[ä¸­åäººæ°‘å…±å’Œå›½ç½‘ç»œå®‰å…¨æ³•](http://www.npc.gov.cn/npc/xinwen/2016-11/07/content_2001605.htm)ã€‹ï¼Œå‹¿å°†VulScanç”¨äºéæˆæƒçš„æµ‹è¯•ï¼ŒVulscanå¼€å‘è€…ä¸è´Ÿä»»ä½•è¿å¸¦æ³•å¾‹è´£ä»»ã€‚**
 
 
 
