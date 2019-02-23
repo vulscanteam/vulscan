@@ -12,6 +12,6 @@
 
 ## 安装指南 [![Python 2.7](https://img.shields.io/badge/python-2.7-yellow.svg)](https://www.python.org/) 
 
-# 安装命令：pip install -r requirements.txt
+**安装命令：pip install -r requirements.txt**
 （打包命令：pip freeze > requirements.txt //如果开发POC需要新的依赖库,在这里记录,尽可能的不使用依赖库减少依赖）
 
