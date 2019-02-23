@@ -1,5 +1,0 @@
-root
-www
-admin
-administrator
-postgres
