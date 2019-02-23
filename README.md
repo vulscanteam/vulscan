@@ -16,3 +16,26 @@
 
 （打包命令：pip freeze > requirements.txt //如果开发POC需要新的依赖库,在这里记录,尽可能的不使用依赖库减少依赖）
 
+## 插件编写
+**目录下的Template.py为插件模版，基于pocsuite配置了一些规则**
+
+## 目录结构
+
+├─accounts 				#账户应用
+├─appscan 				#扫描应用
+├─jixianjiancha 		#基线检查应用
+├─log 					#日志路径路径
+├─plug 					#扩展模块
+├─pocsuite 				#pocsuite核心库
+├─portscan 				#端口扫描
+├─vul 					#POC
+├─weakpass				#弱口令文件
+└─webscan				#主项目
+
+## 维护作者
+
+
+## 问题反馈
+
+微信二维码
+
