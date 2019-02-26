@@ -32,7 +32,7 @@ class webLogicPOC(POCBase):
     vulID = '56'  # ssvid ID 如果是提交漏洞的同时提交 PoC,则写成 0
     version = '1'  # 默认为1
     vulDate = '2019-1-15'  # 漏洞公开的时间,不知道就写今天
-    author = 'fanyingjie'  # PoC作者的大名
+    author = 'xiaohuihui1'  # PoC作者的大名
     createDate = '2019-1-15'  # 编写 PoC 的日期
     updateDate = '2019-1-15'  # PoC 更新的时间,默认和编写时间一样
     references = ['https://xz.aliyun.com/t/3845','https://xz.aliyun.com/t/3868']  # 漏洞地址来源,0day不用写
@@ -72,8 +72,8 @@ class webLogicPOC(POCBase):
             _host = url2ip(vul_url)
             _port = 80
         
-
-        #判断端口是否开放   
+	
+        #判断端口是否开放.   
         import socket
         sk = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         sk.settimeout(1)
