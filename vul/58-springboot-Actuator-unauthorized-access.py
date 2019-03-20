@@ -57,7 +57,7 @@ class ActuaorPOC(POCBase):
         for i in payload:
             vul_url  = '{}/{}'.format(self.url, i)
             try:
-                req.get(url=vul_url, timeput=3, verify=False)
+                resp = req.get(url=vul_url, timeput=3, verify=False)
                 if resp.headers['Content-Type'] and 'application/json' in resp.headers['Content-Type'] and len(resp.content)> 500:
                     result['VerifyInfo'] = {}
                     result['VerifyInfo']['url'] = vul_url
