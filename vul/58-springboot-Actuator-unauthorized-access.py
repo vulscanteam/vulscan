@@ -61,7 +61,7 @@ class ActuaorPOC(POCBase):
                 if resp.headers['Content-Type'] and 'application/json' in resp.headers['Content-Type'] and len(resp.content)> 500:
                     result['VerifyInfo'] = {}
                     result['VerifyInfo']['url'] = vul_url
-                    result['VerifyInfo']['Payload'] = 'path:{}'.format(vul_url)
+                    result['VerifyInfo']['Payload'] = 'path:{}'.format(i)
                     break
             except Exception as e:
                 pass
