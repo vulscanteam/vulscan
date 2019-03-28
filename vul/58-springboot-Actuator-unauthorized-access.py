@@ -19,8 +19,7 @@ from pocsuite.api.request import req
 from pocsuite.api.poc import register
 #report
 from pocsuite.api.poc import Output, POCBase
-#url转换host
-from pocsuite.lib.utils.funs import url2ip
+
 
 #基础基类
 class ActuaorPOC(POCBase):
@@ -48,7 +47,7 @@ class ActuaorPOC(POCBase):
     def _fingerprint(self):
         pass
         
-    #验证模块 pocsuite -r 1-redis.py -u 10.1.5.26 --verify
+    #验证模块 pocsuite -r 58-springboot-Actuator-unauthorized.py -u http://127.0.0.1 --verify
     def _verify(self):
         #调用指纹方法
         result = {}
@@ -57,11 +56,11 @@ class ActuaorPOC(POCBase):
         for i in payload:
             vul_url  = '{}/{}'.format(self.url, i)
             try:
-                resp = req.get(url=vul_url, timeput=3, verify=False)
+                resp = req.get(url=vul_url, timeout=3, verify=False)
                 if resp.headers['Content-Type'] and 'application/json' in resp.headers['Content-Type'] and len(resp.content)> 500:
                     result['VerifyInfo'] = {}
                     result['VerifyInfo']['url'] = vul_url
-                    result['VerifyInfo']['Payload'] = 'path:{}'.format(i)
+                    result['VerifyInfo']['Payload'] = 'path:/{}'.format(i)
                     break
             except Exception as e:
                 pass
@@ -73,7 +72,7 @@ class ActuaorPOC(POCBase):
 
     #输出报告
     def save_output(self, result):
-        output = Output()
+        output = Output(self)
         if result:
             output.success(result)
         else:
