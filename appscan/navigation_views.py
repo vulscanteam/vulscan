@@ -14,8 +14,11 @@ def index(request):
     result = []
     fenlei = navigation.objects.all()
     #print len(fenlei)
+    
+    '''
     for key in range(1,len(fenlei)+1) :
         print (fenlei[key-1]).__str__,">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
+    '''
 
     for key in range(0,len(fenlei)+1) :
         #print str(fenlei[key]).decode("utf-8").encode("gbk")
