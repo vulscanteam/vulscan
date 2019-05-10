@@ -67,7 +67,7 @@
 
 ## 问题反馈
 
-**微信群二维码：（如果二维码过期，加微信 baidunew 入群）**
+**微信群二维码：（如果二维码过期，加微信 baidunew 备注 Vulscan看到的）**
 
 ![](https://github.com/vulscanteam/vulscan/blob/master/webscan/demo/0.png)
 
